@@ -4,7 +4,6 @@
 {%- set values = data.get(field.field_name, [])
     + [''] * field.get('form_blanks', 3) -%}
 {%- for element in values -%}
-  <!--{{ form.input(-->
     {{ form.custom(
     field.field_name + '-' ~ loop.index,
     id='field-' + field.field_name + '-' ~ loop.index,
