@@ -6,39 +6,62 @@
 {%- for element in values -%}
     
     {% if loop.index == 1 %}
-    	<div id="visible">	
-	    {{ form.input(
-	    field.field_name + '-' ~ loop.index,
-	    id='field-' + field.field_name + '-' ~ loop.index,
-	    label=h.scheming_language_text(field.label) + ' ' ~ loop.index,
-	    placeholder=h.scheming_language_text(field.form_placeholder),
-	    value=element,
-	    error=errors[field.field_name],
-	    classes=['control-medium'],
-	    attrs=field.form_attrs if 'form_attrs' in field else {},
-	    is_required=h.scheming_field_required(field)
-	    ) }}
+            <div id="visible">	
+	        {{ form.input(
+     		    field.field_name + '-' ~ loop.index,
+		    id='field-' + field.field_name + '-' ~ loop.index,
+		    label=h.scheming_language_text(field.label) + ' ' ~ loop.index,
+		    placeholder=h.scheming_language_text(field.form_placeholder),
+		    value=element,
+		    error=errors[field.field_name],
+		    classes=['control-medium'],
+		    attrs=field.form_attrs if 'form_attrs' in field else {},
+		    is_required=h.scheming_field_required(field)
+	         ) }}
             <input id="button1" type="button" value="Agregar {{ field.label }}" onclick="mostrar({{ loop.index }})"> 
- 	</div>
+            </div>
     {% else %}
 	{% set ocultoid = "oculto"+loop.index|string %}
-	<div id="{{ ocultoid }}" style='display:none;'>
-	    {{ form.input(
-	    field.field_name + '-' ~ loop.index,
-	    id='field-' + field.field_name + '-' ~ loop.index,
-	    label=h.scheming_language_text(field.label) + ' ' ~ loop.index,
-	    placeholder=h.scheming_language_text(field.form_placeholder),
-	    value=element,
-	    error=errors[field.field_name],
-	    classes=['control-medium'],
-	    attrs=field.form_attrs if 'form_attrs' in field else {},
-	    is_required=h.scheming_field_required(field)
-	    ) }}
-            {% if (loop.index < values|length ) %}
-    		{% set buttonid = "button"+loop.index|string %}
-    		<input id="{{ buttonid }}" type="button" value="Agregar {{ field.label }}" onclick="mostrar({{ loop.index }})"> 
-    	    {% endif %}
-         </div>
+        {% if element == '' %}
+		{% set visibilidad = "display:none;"%}
+		<div id="{{ ocultoid }}" style="{{ visibilidad }}">
+	       		{{ form.input(
+	  		    field.field_name + '-' ~ loop.index,
+		    	    id='field-' + field.field_name + '-' ~ loop.index,
+			    label=h.scheming_language_text(field.label) + ' ' ~ loop.index,
+			    placeholder=h.scheming_language_text(field.form_placeholder),
+			    value=element,
+			    error=errors[field.field_name],
+			    classes=['control-medium'],
+			    attrs=field.form_attrs if 'form_attrs' in field else {},
+			    is_required=h.scheming_field_required(field)
+		        ) }}
+        	    	{% if (loop.index < values|length ) %}
+	    			{% set buttonid = "button"+loop.index|string %}
+	    			<input id="{{ buttonid }}" type="button" value="Agregar {{ field.label }}" onclick="mostrar({{ loop.index }})" 					style="{{ visibilidad }}"> 
+	        	{% endif %}
+                 </div>
+
+	{% else %}
+		{% set visibilidad = "display:block;"%}
+		<div id="{{ ocultoid }}" style="{{ visibilidad }}">
+	        	{{ form.input(
+  		    		    field.field_name + '-' ~ loop.index,
+			    	    id='field-' + field.field_name + '-' ~ loop.index,
+				    label=h.scheming_language_text(field.label) + ' ' ~ loop.index,
+				    placeholder=h.scheming_language_text(field.form_placeholder),
+				    value=element,
+				    error=errors[field.field_name],
+				    classes=['control-medium'],
+				    attrs=field.form_attrs if 'form_attrs' in field else {},
+				    is_required=h.scheming_field_required(field)
+		        ) }}
+            		{% if (loop.index < values|length ) %}
+    				{% set buttonid = "button"+loop.index|string %}
+    				<input id="{{ buttonid }}" type="button" value="Agregar {{ field.label }}" onclick="mostrar({{ loop.index }})" 					style="{{ visibilidad }}"> 
+	        	{% endif %}
+                 </div>
+	{% endif %}	    
     {% endif %}
    
    {%- endfor -%}
