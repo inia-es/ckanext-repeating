@@ -17,7 +17,7 @@
 		    attrs=field.form_attrs if 'form_attrs' in field else {},
 		    is_required=h.scheming_field_required(field)
 	         ) }}
-            <input id="button1" type="button" value="Agregar {{ field.label }}" onclick="mostrar({{ loop.index }})"> 
+            <input id="button1" type="button" value="Agregar {{ field.label }}" onclick="mostrar({{ loop.index }})" style="font-size: 8px; padding: 1px; float: right;"> 
             </div>
     {% else %}
 	{% set ocultoid = "oculto"+loop.index|string %}
@@ -37,7 +37,7 @@
 		        ) }}
         	    	{% if (loop.index < values|length ) %}
 	    			{% set buttonid = "button"+loop.index|string %}
-         		       <input id="{{ buttonid }}" type="button" value="Agregar {{ field.label }}" onclick="mostrar({{ loop.index }})"> 
+         		       <input id="{{ buttonid }}" type="button" value="Agregar {{ field.label }}" onclick="mostrar({{ loop.index }})" style="font-size: 8px; padding: 1px; float: right;"> 
 	        	{% endif %}
                  </div>
 
