@@ -3,8 +3,7 @@
 <div data-module="custom-fields" >
 {%- set values = data.get(field.field_name, [])
     + [''] * field.get('form_blanks', 3) -%}
-{%- for element in values -%}
-    
+{%- for element in values -%}  
     {% if loop.index == 1 %}
             <div id="visible">	
 	        {{ form.input(
@@ -23,7 +22,7 @@
     {% else %}
 	{% set ocultoid = "oculto"+loop.index|string %}
         {% if element == '' %}
-		{% set visibilidad = "display:none;"%}
+		{% set visibilidad = "display:none;" %}
 		<div id="{{ ocultoid }}" style="{{ visibilidad }}">
 	       		{{ form.input(
 	  		    field.field_name + '-' ~ loop.index,
@@ -38,12 +37,12 @@
 		        ) }}
         	    	{% if (loop.index < values|length ) %}
 	    			{% set buttonid = "button"+loop.index|string %}
-	    			<input id="{{ buttonid }}" type="button" value="Agregar {{ field.label }}" onclick="mostrar({{ loop.index }})" 					style="{{ visibilidad }}"> 
+         		       <input id="{{ buttonid }}" type="button" value="Agregar {{ field.label }}" onclick="mostrar({{ loop.index }})"> 
 	        	{% endif %}
                  </div>
 
 	{% else %}
-		{% set visibilidad = "display:block;"%}
+		{% set visibilidad = "display:block;" %}
 		<div id="{{ ocultoid }}" style="{{ visibilidad }}">
 	        	{{ form.input(
   		    		    field.field_name + '-' ~ loop.index,
@@ -58,7 +57,7 @@
 		        ) }}
             		{% if (loop.index < values|length ) %}
     				{% set buttonid = "button"+loop.index|string %}
-    				<input id="{{ buttonid }}" type="button" value="Agregar {{ field.label }}" onclick="mostrar({{ loop.index }})" 					style="{{ visibilidad }}"> 
+    			       <input id="{{ buttonid }}" type="button" value="Agregar {{ field.label }}" onclick="mostrar({{ loop.index }})"> 
 	        	{% endif %}
                  </div>
 	{% endif %}	    
@@ -67,18 +66,12 @@
    {%- endfor -%}
 </div>
 
-
-
 <script type="text/javascript">
 function mostrar(index){
-
-var siguiente=index+1;
-var elementid='oculto'+siguiente;
-document.getElementById(elementid).style.display = 'block';
-var buttonid='button'+index;
-document.getElementById(buttonid).style.display = 'none';
-
+	var siguiente=index+1;
+	var elementid='oculto'+siguiente;
+	document.getElementById(elementid).style.display = 'block';
+	var buttonid='button'+index;
+	document.getElementById(buttonid).style.display = 'none';
 }
-
-
 </script>
