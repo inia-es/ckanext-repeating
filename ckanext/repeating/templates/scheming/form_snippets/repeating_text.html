@@ -5,7 +5,7 @@
     + [''] * field.get('form_blanks', 3) -%}
 {%- for element in values -%}
     
-    {% if loop.index == 0 %}
+    {% if loop.index == 1 %}
     <div id="visible">	
     {{ form.input(
     field.field_name + '-' ~ loop.index,
