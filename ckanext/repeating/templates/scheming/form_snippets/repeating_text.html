@@ -20,7 +20,7 @@
     ) }}
     </div>
     {% else %}
-    {% set ocultoid = "oculto"+loop.index %}
+    {% set ocultoid = "oculto"+loop.index|string %}
     <div id=" {{ ocultoid }} ">
     {{ form.input(
     field.field_name + '-' ~ loop.index,
