@@ -1,9 +1,12 @@
 {% import 'macros/form.html' as form %}
-<input type="button" value="Mostrar" onclick="mostrar()"> 
+
 <div id="oculto" data-module="custom-fields" style='display:none;'>
 {%- set values = data.get(field.field_name, [])
     + [''] * field.get('form_blanks', 3) -%}
 {%- for element in values -%}
+    
+    {% if loop.index == 0 %}
+    <div id="visible">	
     {{ form.input(
     field.field_name + '-' ~ loop.index,
     id='field-' + field.field_name + '-' ~ loop.index,
@@ -15,12 +18,32 @@
     attrs=field.form_attrs if 'form_attrs' in field else {},
     is_required=h.scheming_field_required(field)
     ) }}
-        <input type="button" value="mas"></input>
+    </div>
+    {% else %}
+    {% ocultoid = "oculto"+loop.index %}
+    <div id=" {{ ocultoid }} ">
+    {{ form.input(
+    field.field_name + '-' ~ loop.index,
+    id='field-' + field.field_name + '-' ~ loop.index,
+    label=h.scheming_language_text(field.label) + ' ' ~ loop.index,
+    placeholder=h.scheming_language_text(field.form_placeholder),
+    value=element,
+    error=errors[field.field_name],
+    classes=['control-medium'],
+    attrs=field.form_attrs if 'form_attrs' in field else {},
+    is_required=h.scheming_field_required(field)
+    ) }}
+    </div>
+    {% endif %}
+        <input type="button" value="Mostrar" onclick="mostrar({{ loop.index }})"> 
 {%- endfor -%}
-
 </div>
 
+
+
 <script type="text/javascript">
-function mostrar(){
-document.getElementById('oculto').style.display = 'block';}
+function mostrar(index){
+var siguiente=index+1;
+var id='oculto'+siguiente;
+document.getElementById(id).style.display = 'block';}
 </script>
