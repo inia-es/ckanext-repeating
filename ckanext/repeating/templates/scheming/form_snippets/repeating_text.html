@@ -1,10 +1,10 @@
 {% import 'macros/form.html' as form %}
-
-<div data-module="custom-fields">
+<input type="button" value="Mostrar" onclick="mostrar()"> 
+<div id="oculto" data-module="custom-fields" style='display:none;'>
 {%- set values = data.get(field.field_name, [])
     + [''] * field.get('form_blanks', 3) -%}
 {%- for element in values -%}
-    {{ form.custom(
+    {{ form.input(
     field.field_name + '-' ~ loop.index,
     id='field-' + field.field_name + '-' ~ loop.index,
     label=h.scheming_language_text(field.label) + ' ' ~ loop.index,
@@ -15,5 +15,12 @@
     attrs=field.form_attrs if 'form_attrs' in field else {},
     is_required=h.scheming_field_required(field)
     ) }}
+        <input type="button" value="mas"></input>
 {%- endfor -%}
+
 </div>
+
+<script type="text/javascript">
+function mostrar(){
+document.getElementById('oculto').style.display = 'block';}
+</script>
