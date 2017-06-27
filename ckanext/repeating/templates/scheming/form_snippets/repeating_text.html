@@ -47,7 +47,7 @@
 	{% else %}
 		{% set visibilidad = "display:block;" %}
 		<div id="{{ ocultoid }}" style="{{ visibilidad }}">
-			{% if values[loop.index+1] == '' %}			
+			{% if values[loop.index] == '' %}			
 			{% if (loop.index < values|length ) %}
 	    			{% set buttonid = "button"+loop.index|string %}
          		       <input id="{{ buttonid }}" type="button" value="Agregar {{ field.label }}" onclick="mostrar({{ loop.index }})" style="font-size: 12px; padding: 1px; float: right;"> 
@@ -74,8 +74,8 @@
 
 <script type="text/javascript">
 function mostrar(index){
-	var siguiente=index+1;
-	var elementid='oculto'+siguiente;
+	var next=index+1;
+	var elementid='oculto'+next;
 	document.getElementById(elementid).style.display = 'block';
 	var buttonid='button'+index;
 	document.getElementById(buttonid).style.display = 'none';
