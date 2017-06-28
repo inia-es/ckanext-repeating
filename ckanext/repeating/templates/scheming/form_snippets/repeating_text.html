@@ -7,7 +7,7 @@
     {% if loop.index == 1 %}
             <div id="div_{{ field.label }}_1">	
 		{% if element == '' %}
-	            <input id="button_{{ field.label }}_1" type="button" value="Agregar {{ field.label }}" onclick="add_fields({{ loop.index }}, {{ element }})" style="font-size: 12px; padding: 1px; float: right;">
+	            <input id="button_{{ field.label }}_1" type="button" value="Agregar {{ field.label }}" onclick="add_fields({{ loop.index }}, '{{ field.label }}')" style="font-size: 12px; padding: 1px; float: right;">
 		{% endif %} 
 	        {{ form.input(
      		    field.field_name + '-' ~ loop.index,
@@ -29,7 +29,7 @@
 		<div id="div_{{ field.label }}_{{ ocultoid }}" style="{{ visibilidad }}">
 			{% if (loop.index < values|length ) %}
 	    			{% set buttonid = loop.index|string %}
-         		       <input id="button_{{ field.label }}_{{ buttonid }}" type="button" value="Agregar {{ field.label }}" onclick="add_fields({{ loop.index }}, {{ field.label }})" style="font-size: 12px; padding: 1px; float: right;"> 
+         		       <input id="button_{{ field.label }}_{{ buttonid }}" type="button" value="Agregar {{ field.label }}" onclick="add_fields({{ loop.index }}, '{{ field.label }}')" style="font-size: 12px; padding: 1px; float: right;"> 
 	        	{% endif %}
 	       		{{ form.input(
 	  		    field.field_name + '-' ~ loop.index,
@@ -50,7 +50,7 @@
 			{% if values[loop.index] == '' %}			
 			{% if (loop.index < values|length ) %}
 	    			{% set buttonid = loop.index|string %}
-         		       <input id="button_{{ field.label }}_{{ buttonid }}" type="button" value="Agregar {{ field.label }}" onclick="add_fields({{ loop.index }}, {{ field.label }})" style="font-size: 12px; padding: 1px; float: right;"> 
+         		       <input id="button_{{ field.label }}_{{ buttonid }}" type="button" value="Agregar {{ field.label }}" onclick="add_fields({{ loop.index }}, '{{ field.label }}')" style="font-size: 12px; padding: 1px; float: right;"> 
 			{% endif %}
 			{% endif %}
 
