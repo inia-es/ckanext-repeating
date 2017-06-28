@@ -4,7 +4,7 @@
     + [''] * field.get('form_blanks', 3) -%}
 
 {%- for element in values -%}
-{% set blockname = 'fields_repeating_container_' + field.label_in_repeating_group_fields +'_' + loop.index %}
+{% set blockname = 'fields_repeating_container_' + field.label_in_repeating_group_fields +'_' + loop.index|string %}
 {% block blockname  %}
 <div id="fields_repeating_container_{{ field.label_in_repeating_group_fields }}_{{ loop.index }}">
     {{ form.input(
