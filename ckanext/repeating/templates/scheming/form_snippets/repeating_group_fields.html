@@ -7,7 +7,7 @@
     {% if loop.index == 1 %}
             <div id="fields_repeating_container_1">	
 		{% if element == '' %}
-	            <input id="button_fields_repeating_container_1" type="button" value="Agregar {{ field.label }}" onclick="mostrar({{ loop.index }})" style="font-size: 12px; padding: 1px; float: right;">
+	            <input id="button_fields_repeating_container_1" type="button" value="Agregar {{ field.label }}" onclick="add_field_in_group({{ loop.index }})" style="font-size: 12px; padding: 1px; float: right;">
 		{% endif %} 
 	        {{ form.input(
      		    field.field_name + '-' ~ loop.index,
@@ -29,7 +29,7 @@
 		<div id="fields_repeating_container_{{ ocultoid }}" style="{{ visibilidad }}">
 			{% if (loop.index < values|length ) %}
 	    			{% set buttonid = "button"+loop.index|string %}
-         		       <input id="button_fields_repeating_container_{{ buttonid }}" type="button" value="Agregar {{ field.label }}" onclick="mostrar({{ loop.index }})" style="font-size: 12px; padding: 1px; float: right;"> 
+         		       <input id="button_fields_repeating_container_{{ buttonid }}" type="button" value="Agregar {{ field.label }}" onclick="add_field_in_group({{ loop.index }})" style="font-size: 12px; padding: 1px; float: right;"> 
 	        	{% endif %}
 	       		{{ form.input(
 	  		    field.field_name + '-' ~ loop.index,
@@ -50,7 +50,7 @@
 			{% if values[loop.index] == '' %}			
 			{% if (loop.index < values|length ) %}
 	    			{% set buttonid = "button"+loop.index|string %}
-         		       <input id="button_fields_repeating_container_{{ buttonid }}" type="button" value="Agregar {{ field.label }}" onclick="mostrar({{ loop.index }})" style="font-size: 12px; padding: 1px; float: right;"> 
+         		       <input id="button_fields_repeating_container_{{ buttonid }}" type="button" value="Agregar {{ field.label }}" onclick="add_field_in_group({{ loop.index }})" style="font-size: 12px; padding: 1px; float: right;"> 
 			{% endif %}
 			{% endif %}
 
@@ -73,7 +73,7 @@
 </div>
 
 <script type="text/javascript">
-function mostrar(element, index){
+function add_field_in_group(element, index){
 	var next=index+1;
 	var elementid='fields_repeating_container_'+next;
 	document.getElementById(elementid).style.display = 'block';
