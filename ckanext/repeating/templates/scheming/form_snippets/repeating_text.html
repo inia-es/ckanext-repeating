@@ -5,9 +5,9 @@
     + [''] * field.get('form_blanks', 3) -%}
 {%- for element in values -%}  
     {% if loop.index == 1 %}
-            <div id="div_{{ element }}_1">	
+            <div id="div_{{ field.label }}_1">	
 		{% if element == '' %}
-	            <input id="button_{{ element }}_1" type="button" value="Agregar {{ field.label }}" onclick="add_fields({{ loop.index }}, {{element}})" style="font-size: 12px; padding: 1px; float: right;">
+	            <input id="button_{{ field.label }}_1" type="button" value="Agregar {{ field.label }}" onclick="add_fields({{ loop.index }}, {{ element }})" style="font-size: 12px; padding: 1px; float: right;">
 		{% endif %} 
 	        {{ form.input(
      		    field.field_name + '-' ~ loop.index,
@@ -26,10 +26,10 @@
 	{% set ocultoid = loop.index|string %}
         {% if element == '' %}
 		{% set visibilidad = "display:none;" %}
-		<div id="div_{{ element }}_{{ ocultoid }}" style="{{ visibilidad }}">
+		<div id="div_{{ field.label }}_{{ ocultoid }}" style="{{ visibilidad }}">
 			{% if (loop.index < values|length ) %}
 	    			{% set buttonid = loop.index|string %}
-         		       <input id="button_{{ element }}_{{ buttonid }}" type="button" value="Agregar {{ field.label }}" onclick="add_fields({{ loop.index }}, {{element}})" style="font-size: 12px; padding: 1px; float: right;"> 
+         		       <input id="button_{{ field.label }}_{{ buttonid }}" type="button" value="Agregar {{ field.label }}" onclick="add_fields({{ loop.index }}, {{ field.label }})" style="font-size: 12px; padding: 1px; float: right;"> 
 	        	{% endif %}
 	       		{{ form.input(
 	  		    field.field_name + '-' ~ loop.index,
@@ -46,11 +46,11 @@
 
 	{% else %}
 		{% set visibilidad = "display:block;" %}
-		<div id="div_{{ element }}_{{ ocultoid }}" style="{{ visibilidad }}">
+		<div id="div_{{ field.label }}_{{ ocultoid }}" style="{{ visibilidad }}">
 			{% if values[loop.index] == '' %}			
 			{% if (loop.index < values|length ) %}
 	    			{% set buttonid = loop.index|string %}
-         		       <input id="button_{{ element }}_{{ buttonid }}" type="button" value="Agregar {{ field.label }}" onclick="add_fields({{ loop.index }}, {{element}})" style="font-size: 12px; padding: 1px; float: right;"> 
+         		       <input id="button_{{ field.label }}_{{ buttonid }}" type="button" value="Agregar {{ field.label }}" onclick="add_fields({{ loop.index }}, {{ field.label }})" style="font-size: 12px; padding: 1px; float: right;"> 
 			{% endif %}
 			{% endif %}
 
@@ -73,11 +73,11 @@
 </div>
 
 <script type="text/javascript">
-function add_fields(index, element){
+function add_fields(index, label){
 	var next=index+1;
-	var elementid='div_'+element+'_'+next;
+	var elementid='div_'+label+'_'+next;
 	document.getElementById(elementid).style.display = 'block';
-	var buttonid='button_'+element+'_'+index;
+	var buttonid='button_'+label+'_'+index;
 	document.getElementById(buttonid).style.display = 'none';
 }
 </script>
