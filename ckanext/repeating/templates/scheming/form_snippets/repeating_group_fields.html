@@ -4,7 +4,8 @@
 {%- set values = data.get(field.field_name, [])
     + [''] * field.get('form_blanks', 3) -%}
 {%- for element in values -%}
-{% block repeating %}  
+{% set blockname = 'fields_repeating_container_' + field.label +'_' + loop.index %}
+{% block blockname  %}
     {% if loop.index == 1 %}
             <div id="fields_repeating_container_{{ field.label }}_1">	
 		{% if element == '' %}
