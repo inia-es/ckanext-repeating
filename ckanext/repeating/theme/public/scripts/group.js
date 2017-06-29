@@ -32,7 +32,7 @@ var x = posicion.left;
 switch(d){
  case "A":  y +=100; break;
 }
-nextfieldinput.style.top=y+"px";
+nextfieldinput.style.top="100px";
 nextfieldinput.style.left=nextfieldinput.style.left;
 }
 
