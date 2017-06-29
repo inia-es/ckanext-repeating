@@ -15,13 +15,17 @@ function MoverTexto(elementid, nextelementid,d){
  var fieldinput=document.getElementById(elementid);
  var nextfieldinput=document.getElementById(nextelementid);
 
+var posicion = fieldinput.position();
+var y = posicion.top;
+var x = posicion.left;
+/**
  var y=(document.defaultView && document.defaultView.getComputedStyle) ?
         document.defaultView.getComputedStyle(fieldinput,'').getPropertyValue("top") :
         fieldinput.currentStyle ? fieldinput.currentStyle.top : "";
  var x=(document.defaultView && document.defaultView.getComputedStyle) ?
         document.defaultView.getComputedStyle(fieldinput,'').getPropertyValue("left") :
         fieldinput.currentStyle ? fieldinput.currentStyle.left : "";
-
+**/
  x= parseInt(x);
  y= parseInt(y);
 
