@@ -1,1 +1,2 @@
 recursive-include ckanext *.html *.json *.yaml
+recursive-include    ckanext/repeating *.html *.json *.js *.less *.css
