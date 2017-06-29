@@ -13,7 +13,9 @@ class RepeatingPlugin(p.SingletonPlugin):
         """
         We have some form snippets that support ckanext-scheming
         """
-        add_template_directory(config, 'templates')
+        add_template_directory(config, 'theme/templates')
+        p.toolkit.add_public_directory(config, 'theme/public')
+        p.toolkit.add_resource('theme/public', 'ckanext-repeating')
 
     def get_validators(self):
         return {
