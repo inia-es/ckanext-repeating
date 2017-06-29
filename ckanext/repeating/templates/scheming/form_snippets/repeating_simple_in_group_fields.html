@@ -4,8 +4,6 @@
     + [''] * field.get('form_blanks', 3) -%}
 
 {%- for element in values -%}
-{% set blockname = 'fields_repeating_container_' + field.label_in_repeating_group_fields +'_' + loop.index|string %}
-{% block blockname  %}
 <div id="fields_repeating_container_{{ field.label_in_repeating_group_fields }}_{{ loop.index }}">
     {{ form.input(
     field.field_name + '-' ~ loop.index,
@@ -18,7 +16,6 @@
     attrs=field.form_attrs if 'form_attrs' in field else {},
     is_required=h.scheming_field_required(field)
     ) }}
-{% endblock %}
 {%- endfor -%}
 </div>
 
