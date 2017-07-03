@@ -5,7 +5,7 @@
     + [''] * field.get('form_blanks', 3) -%}
 
 {% for subfield in field.field_name_subfields %}
-	{% set fieldname_subfields = {{ ', '.join(subfield) }} %}	
+	{% set fieldname_subfields =  ', '.join(subfield) %}	
 {% endfor %}
 
 {%- for element in values -%}
