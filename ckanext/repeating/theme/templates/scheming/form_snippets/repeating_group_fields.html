@@ -3,7 +3,7 @@
 <div data-module="custom-fields" >
 {%- set values = data.get(field.field_name, [])
     + [''] * field.get('form_blanks', 3) -%}
-{% set fieldname_subfields = {{ field.field_name_subfields }}|string %}
+{% set fieldname_subfields = field.field_name_subfields|string %}
 {%- for element in values -%}
     {% if loop.index == 1 %}
             <div id="fields_repeating_container_{{ field.label }}_1">	
