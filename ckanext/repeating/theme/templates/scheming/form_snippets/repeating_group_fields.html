@@ -12,7 +12,7 @@
     {% if loop.index == 1 %}
             <div id="fields_repeating_container_{{ field.label }}_1">	
 		{% if element == '' %}
-	            <input id="button_fields_repeating_container_{{ field.label }}_1" type="button" value="Agregar {{ field.label }}" onclick="add_field_in_group({{ loop.index }} , '{{ field.label }}', fieldname_subfields )" style="font-size: 12px; padding: 1px; float: right;">
+	            <input id="button_fields_repeating_container_{{ field.label }}_1" type="button" value="Agregar {{ field.label }}" onclick="add_field_in_group({{ loop.index }} , '{{ field.label }}', {{ fieldname_subfields }} )" style="font-size: 12px; padding: 1px; float: right;">
 		{% endif %} 
 	        {{ form.input(
      		    field.field_name + '-' ~ loop.index,
@@ -34,7 +34,7 @@
 		<div id="fields_repeating_container_{{ field.label }}_{{ ocultoid }}" style="{{ visibilidad }}">
 			{% if (loop.index < values|length ) %}
 	    			{% set buttonid = loop.index|string %}
-         		       <input id="button_fields_repeating_container_{{ field.label }}_{{ buttonid }}" type="button" value="Agregar {{ field.label }}" onclick="add_field_in_group({{ loop.index }}, '{{ field.label }}', fieldname_subfields)" style="font-size: 12px; padding: 1px; float: right;"> 
+         		       <input id="button_fields_repeating_container_{{ field.label }}_{{ buttonid }}" type="button" value="Agregar {{ field.label }}" onclick="add_field_in_group({{ loop.index }}, '{{ field.label }}', {{ fieldname_subfields }} )" style="font-size: 12px; padding: 1px; float: right;"> 
 	        	{% endif %}
 	       		{{ form.input(
 	  		    field.field_name + '-' ~ loop.index,
@@ -55,7 +55,7 @@
 			{% if values[loop.index] == '' %}			
 			{% if (loop.index < values|length ) %}
 	    			{% set buttonid = loop.index|string %}
-         		       <input id="button_fields_repeating_container_{{ field.label }}_{{ buttonid }}" type="button" value="Agregar {{ field.label }}" onclick="add_field_in_group({{ loop.index }}, '{{ field.label }}', fieldname_subfields)" style="font-size: 12px; padding: 1px; float: right;"> 
+         		       <input id="button_fields_repeating_container_{{ field.label }}_{{ buttonid }}" type="button" value="Agregar {{ field.label }}" onclick="add_field_in_group({{ loop.index }}, '{{ field.label }}', {{ fieldname_subfields }} )" style="font-size: 12px; padding: 1px; float: right;"> 
 			{% endif %}
 			{% endif %}
 
