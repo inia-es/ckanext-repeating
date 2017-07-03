@@ -7,7 +7,7 @@
 
 <ol>
 {%- for element in values -%}
-<div id="fields_repeating_container_{{ field.label }}_loop.index">
+<div id="fields_repeating_container_{{ field.label }}_{{ loop.index}} ">
   <li>{{ element }}</li>
 </div>
 {%- endfor -%}
@@ -21,15 +21,13 @@ if(auxButton){
 }
 function grouping(num_elements,label,subfields)
 {
-
-
 for (i = 0; i < num_elements; i++) {
 	var index = i+1;
 	var elementid = 'fields_repeating_container_'+label+'_'+index;
 	for (j = 0; j < subfields.length; j++) {
 		var subfield = document.getElementById('fields_repeating_container_'+subfields[j]+'_'+index);
-		var fieldinput = document.getElementById(elementid);
-		fieldinput.appendChild(subfield);
+		var group_fields_div = document.getElementById(elementid);
+		group_fields_div.appendChild(subfield);
 	}
 }
 }
