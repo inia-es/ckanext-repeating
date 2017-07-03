@@ -13,9 +13,9 @@ function add_field_in_group(index, label, subfields){
 
 function MoverDiv(elementid, subfields, index, next){
 	for (i = 0; i < subfields.length; i++) {
-/**
-Agregando los actuales subcampos al div del campo principal
-**/
+		/**
+			Agregando los actuales subcampos al div del campo principal
+		**/
        		var subfield = document.getElementById('fields_repeating_container_'+subfields[i]+'_'+index);
 		var fieldinput = document.getElementById(elementid);
 		fieldinput.appendChild(subfield);
