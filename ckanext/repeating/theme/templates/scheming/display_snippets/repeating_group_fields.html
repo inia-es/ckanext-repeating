@@ -7,11 +7,11 @@
 
 <ol>
 {%- for element in values -%}
-<div id="fields_repeating_container_{{ field.label }}_{{ loop.index}} ">
+<div id="fields_repeating_container_{{ field.field_name }}_{{ loop.index}} ">
   <li>{{ element }}</li>
 </div>
 {%- endfor -%}
-<input type="button" id="auxButton" onclick="grouping({{ values|length }}, '{{ field.label }}', {{ fieldname_subfields }} )">  
+<input type="button" id="auxButton" onclick="grouping({{ values|length }}, '{{ field.field_name }}', {{ fieldname_subfields }} )">  
 </ol>
 
 <script>
