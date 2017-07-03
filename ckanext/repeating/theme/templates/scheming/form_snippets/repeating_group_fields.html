@@ -11,7 +11,7 @@
      {% if loop.index == 1 %}
             <div id="fields_repeating_container_{{ field.label }}_{{ ocultoid }}_1" style="background-color: #F5F5F5;">	
 		{% if element == '' or values[loop.index] == '' %}
-	            <input id="button_{{ field.label }}_1" type="button" value="Agregar {{ field.label }}" onclick="add_fields({{ loop.index }}, '{{ field.label }}')" style="font-size: 12px; padding: 1px; float: right;">
+	           <input id="button_fields_repeating_container_{{ field.label }}_{{ buttonid }}" type="button" value="Agregar {{ field.label }}" onclick="add_field_in_group({{ loop.index }}, '{{ field.label }}', {{ fieldname_subfields }} )" style="font-size: 12px; padding: 1px; float: right;"> 
 		{% endif %} 
 	
                 {{ form.input(

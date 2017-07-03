@@ -6,7 +6,7 @@
 {%- for element in values -%}  
     {% if loop.index == 1 %}
             <div id="div_{{ field.label }}_1">	
-		{% if element == '' %}
+		{% if element == '' or values[loop.index] == '' %}
 	            <input id="button_{{ field.label }}_1" type="button" value="Agregar {{ field.label }}" onclick="add_fields({{ loop.index }}, '{{ field.label }}')" style="font-size: 12px; padding: 1px; float: right;">
 		{% endif %} 
 	        {{ form.input(
