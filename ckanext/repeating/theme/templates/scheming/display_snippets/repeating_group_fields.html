@@ -26,7 +26,7 @@ for (i = 0; i < num_elements; i++) {
 	var elementid = 'fields_repeating_container_'+label+'_'+index;
 	for (j = 0; j < subfields.length; j++) {
 		var subfield = document.getElementById('fields_repeating_container_'+subfields[j]+'_'+index);
-		var group_fields_div = document.getElementById(elementid);
+		var group_fields_div = document.getElementById('fields_repeating_container_'+label+'_'+index);
 		group_fields_div.appendChild(subfield);
 	}
 }
