@@ -10,7 +10,7 @@
 	{% if loop.index < field.field_name_subfields.length %}
 		{% set fieldname_subfields = fieldname_subfields + "," %}
 	{% endif %}
-{% end for %}	
+{% endfor %}	
 {% set fieldname_subfields = fieldname_subfields + "]"%}
 
 {%- for element in values -%}
