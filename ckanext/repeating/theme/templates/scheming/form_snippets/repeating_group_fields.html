@@ -4,9 +4,8 @@
 {%- set values = data.get(field.field_name, [])
     + [''] * field.get('form_blanks', 3) -%}
 
-{% for subfield in field.field_name_subfields %}
-	{% set fieldname_subfields =  ', '.join(subfield) %}	
-{% endfor %}
+{% set fieldname_subfields =  field.field_name_subfields|string %}	
+
 
 {%- for element in values -%}
     {% if loop.index == 1 %}
