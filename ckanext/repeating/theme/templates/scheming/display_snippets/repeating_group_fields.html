@@ -1,0 +1,36 @@
+{%- set values = data[field.field_name] -%}
+
+
+{% set fieldname_subfields = field.field_name_subfields|string %}
+{% set fieldname_subfields = fieldname_subfields | replace("u","")  %}
+
+
+<ol>
+{%- for element in values -%}
+<div id="fields_repeating_container_{{ field.label }}_loop.index">
+  <li>{{ element }}</li>
+</div>
+{%- endfor -%}
+<input type="button" id="auxButton" onclick="grouping({{ values|length }}, '{{ field.label }}', {{ fieldname_subfields }} )">  
+</ol>
+
+<script>
+var auxButton = document.getElementById('auxButton');
+if(auxButton){
+	auxButton.click();
+}
+function grouping(num_elements,label,subfields)
+{
+
+
+for (i = 0; i < num_elements; i++) {
+	var index = i+1;
+	var elementid = 'fields_repeating_container_'+label+'_'+index;
+	for (j = 0; j < subfields.length; j++) {
+		var subfield = document.getElementById('fields_repeating_container_'+subfields[j]+'_'+index);
+		var fieldinput = document.getElementById(elementid);
+		fieldinput.appendChild(subfield);
+	}
+}
+}
+</script>
