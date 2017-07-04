@@ -2,7 +2,7 @@
 
 {% set fieldname_subfields = field.field_name_subfields|string %}
 {% set subfields_to_javascript = fieldname_subfields | replace("u'","'")  %}
-{% set fieldname_subfields = fieldname_subfields | replace("u'","'") | replace("'","") | replace("[","") | replace("]","")  %}
+{% set fieldname_subfields = fieldname_subfields | replace("u'","'") | replace("'","") | replace("[","") | replace("]","") | replace(", ","")  %}
 
 
 <ol>
@@ -16,9 +16,10 @@
 <input type="button" id="auxButton" onclick="grouping({{ values|length }}, '{{ field.field_name }}', {{ subfields_to_javascript }} )" style="display:none;">  
 </ol>
 
-{% set fieldslist = fieldname_subfields.split(',') %}
+{%- set fieldslist = fieldname_subfields.split(',') -%}
   <li>'{{ fieldname_subfields }}'</li>
 {%- for field in fieldslist -%}
+{%  set field =  field | replace(" ","") %}
   <li>'{{ field }}'</li>
 	{%- set fieldvalues = data[field] -%}
 	{% if fieldvalues %}
