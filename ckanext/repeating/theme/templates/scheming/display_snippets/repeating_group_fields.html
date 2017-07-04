@@ -7,7 +7,7 @@
 
 <ol>
 {%- for element in values -%}
-<div id="fields_repeating_container_{{ field.field_name }}_{{ loop.index}} ">
+<div id="fields_repeating_container_{{ field.field_name }}_{{ loop.index}}">
   <li>{{ element }}</li>
 </div>
 {%- endfor -%}
@@ -15,13 +15,17 @@
 </ol>
 
 {% set fieldslist = fieldname_subfields.split(',') %}
+<li>{{ fieldslist|safe }}</li>
 {%- for field in fieldslist -%}
-<li>{{ field }}</li>
+<li>{{ field|safe }}</li>
+
 	
 	{%- set fieldvalues = data['email'] -%}
 	{% if fieldvalues %}
 		{%- for val in fieldvalues -%}
+			<div id="fields_repeating_container_email_{{ loop.index}}">  
 			  <li>{{ val }}</li>
+			</div>
 		{%- endfor -%}
 	{% else %}
 		 <li>no data in fieldvalues</li>

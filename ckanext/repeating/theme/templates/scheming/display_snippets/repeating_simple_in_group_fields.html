@@ -1,8 +1,6 @@
 {%- set values = data[field.field_name] -%}
 
 {%- for element in values -%}
-<div id="fields_repeating_container_{{ field.field_name }}_{{ loop.index}}">  
 {{ element }}
-</div>
 {%- endfor -%}
 
