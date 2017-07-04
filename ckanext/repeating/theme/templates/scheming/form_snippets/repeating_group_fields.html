@@ -73,8 +73,33 @@
 	{% endif %}	    
  {% endif %}	
    {%- endfor -%}
+ <input id="auxButton" type="button" value="agrupar" onclick="grouping({{ values|length }}, '{{ field.label }}', {{ fieldname_subfields }} )" style="font-size: 12px; padding: 1px; float: right; display:none;"> 
 </div>
 
 {% resource 'ckanext-repeating/main' %}
+
+
+
+<script>
+var auxButton = document.getElementById('auxButton');
+if(auxButton){
+	auxButton.click();
+}
+function grouping(num_elements,label,subfields)
+{
+	for (i = 0; i < num_elements; i++) {
+		var index = i+1;
+		var elementid = 'fields_repeating_container_'+label+'_'+index;
+		for (j = 0; j < subfields.length; j++) {
+			var subfieldId='fields_repeating_container_'+subfields[j]+'_'+index;
+			var subfield = document.getElementById(subfieldId);
+			var group_fields_vidId = 'fields_repeating_container_'+label+'_'+index;
+			var group_fields_div = document.getElementById(group_fields_vidId);
+			group_fields_div.appendChild(subfield);
+		}
+	}
+}
+</script>
+
 
 
