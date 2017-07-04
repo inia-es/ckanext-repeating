@@ -18,7 +18,7 @@
 {%- for field in fieldslist -%}
 <li>{{ field }}</li>
 	
-	{%- set fieldvalues = data[field] -%}
+	{%- set fieldvalues = data['email'] -%}
 	{% if fieldvalues %}
 		{%- for val in fieldvalues -%}
 			  <li>{{ val }}</li>
