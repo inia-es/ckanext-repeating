@@ -17,8 +17,9 @@
 </ol>
 
 {% set fieldslist = fieldname_subfields.split(',') %}
+  <li>'{{ fieldname_subfields }}'</li>
 {%- for field in fieldslist -%}
-  <li>{{ field }}</li>
+  <li>'{{ field }}'</li>
 	{%- set fieldvalues = data[field] -%}
 	{% if fieldvalues %}
 		{%- for val in fieldvalues -%}
