@@ -3,7 +3,8 @@
 
 {% set fieldname_subfields = field.field_name_subfields|string %}
 {% set fieldname_subfields = fieldname_subfields | replace("u","")  %}
-
+{% set fieldname_subfields = fieldname_subfields | replace("'","")  %}
+{% set fieldname_subfields = fieldname_subfields | replace("[","") | replace("]","")   %}
 
 <ol>
 {%- for element in values -%}
@@ -15,15 +16,15 @@
 </ol>
 
 {% set fieldslist = fieldname_subfields.split(',') %}
-<li>{{ fieldslist|safe }}</li>
+<li>{{ fieldslist }}</li>
 {%- for field in fieldslist -%}
-<li>{{ field|safe }}</li>
+<li>{{ field }}</li>
 
 	
-	{%- set fieldvalues = data['email'] -%}
+	{%- set fieldvalues = data[field] -%}
 	{% if fieldvalues %}
 		{%- for val in fieldvalues -%}
-			<div id="fields_repeating_container_email_{{ loop.index}}">  
+			<div id="fields_repeating_container_{{ fieldvalues }}_{{ loop.index}}">  
 			  <li>{{ val }}</li>
 			</div>
 		{%- endfor -%}
