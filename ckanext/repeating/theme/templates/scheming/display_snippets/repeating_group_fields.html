@@ -8,7 +8,9 @@
 
 <ol>
 {%- for element in values -%}
-<div id="fields_repeating_container_{{ field.field_name }}_{{ loop.index}}">
+<div style="padding: 10px">
+<div id="fields_repeating_container_{{ field.field_name }}_{{ loop.index}} " style="background-color: #F5F5F5">
+</div">
   <li>{{ element }}</li>
 </div>
 {%- endfor -%}
@@ -16,15 +18,11 @@
 </ol>
 
 {% set fieldslist = fieldname_subfields.split(',') %}
-<li>{{ fieldslist }}</li>
 {%- for field in fieldslist -%}
-<li>{{ field }}</li>
-
-	
 	{%- set fieldvalues = data[field] -%}
 	{% if fieldvalues %}
 		{%- for val in fieldvalues -%}
-			<div id="fields_repeating_container_{{ fieldvalues }}_{{ loop.index}}">  
+			<div id="fields_repeating_container_'{{ fieldvalues }}'_{{ loop.index}}">  
 			  <li>{{ val }}</li>
 			</div>
 		{%- endfor -%}

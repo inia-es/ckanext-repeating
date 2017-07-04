@@ -18,7 +18,7 @@ function MoverDiv(elementid, subfields, index, next){
 		**/
        		var subfield = document.getElementById('fields_repeating_container_'+subfields[i]+'_'+index);
 		var groupfields = document.getElementById(elementid);
-		groupfields.style.background ='background-color: #F5F5F5;'
+		groupfields.style.background ='#F5F5F5'
 		groupfields.appendChild(subfield);
 		
 		/**mostrando los siguientes subcampos*/
