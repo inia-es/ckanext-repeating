@@ -25,7 +25,6 @@
       "preset_name": "repeating_simple_in_group_fields",
       "values": {
         "form_snippet": "repeating_simple_in_group_fields.html",
-        "display_snippet": "repeating_simple_in_group_fields.html",
         "validators": "repeating_text",
         "output_validators": "repeating_text_output"
       }

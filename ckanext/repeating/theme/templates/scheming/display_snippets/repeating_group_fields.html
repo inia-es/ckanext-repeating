@@ -1,8 +1,8 @@
 {%- set values = data[field.field_name] -%}
 
-
 {% set fieldname_subfields = field.field_name_subfields|string %}
 {% set fieldname_subfields = fieldname_subfields | replace("u","")  %}
+{% set subfields = fieldname_subfields | replace("u","")  %}
 {% set fieldname_subfields = fieldname_subfields | replace("'","")  %}
 {% set fieldname_subfields = fieldname_subfields | replace("[","") | replace("]","")   %}
 
@@ -14,7 +14,7 @@
 </div>
 </div>
 {%- endfor -%}
-<input type="button" id="auxButton" onclick="grouping({{ values|length }}, '{{ field.field_name }}', {{ fieldname_subfields }} )" style="display:none;">  
+<input type="button" id="auxButton" onclick="grouping({{ values|length }}, '{{ field.field_name }}', {{ subfields }} )" style="display:none;">  
 </ol>
 
 {% set fieldslist = fieldname_subfields.split(',') %}
@@ -30,8 +30,6 @@
 		 <li>no data in fieldvalues</li>
 	{% endif %}
 {%- endfor -%}
-
-
 
 <script>
 var auxButton = document.getElementById('auxButton');
