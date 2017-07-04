@@ -22,7 +22,7 @@
 	{%- set fieldvalues = data[field] -%}
 	{% if fieldvalues %}
 		{%- for val in fieldvalues -%}
-			<div id="fields_repeating_container_'{{ field }}'_{{ loop.index}}">  
+			<div id="fields_repeating_container_{{ field }}_{{ loop.index}}">  
 			  	{{ val }}
 			</div>
 		{%- endfor -%}
