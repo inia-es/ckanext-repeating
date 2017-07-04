@@ -5,7 +5,7 @@
     + [''] * field.get('form_blanks', 3) -%}
 
 {% set fieldname_subfields = field.field_name_subfields|string %}
-{% set fieldname_subfields = fieldname_subfields | replace("u","")  %}
+{% set fieldname_subfields = fieldname_subfields | replace("u'","'")  %}
 
 {%- for element in values -%}
      {% if loop.index == 1 %}

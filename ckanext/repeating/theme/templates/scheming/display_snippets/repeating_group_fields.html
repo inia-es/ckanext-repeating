@@ -2,7 +2,7 @@
 
 {% set fieldname_subfields = field.field_name_subfields|string %}
 {% set fieldname_subfields = fieldname_subfields | replace("u","")  %}
-{% set subfields = fieldname_subfields | replace("u","")  %}
+{% set subfields = fieldname_subfields | replace("u'","")  %}
 {% set fieldname_subfields = fieldname_subfields | replace("'","")  %}
 {% set fieldname_subfields = fieldname_subfields | replace("[","") | replace("]","")   %}
 
