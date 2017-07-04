@@ -1,10 +1,9 @@
 {%- set values = data[field.field_name] -%}
 
 {% set fieldname_subfields = field.field_name_subfields|string %}
-{% set subfields_to_javascript = fieldname_subfields | replace("u","")  %}
-{% set fieldname_subfields = fieldname_subfields | replace("u'","")  %}
-{% set fieldname_subfields = fieldname_subfields | replace("'","")  %}
-{% set fieldname_subfields = fieldname_subfields | replace("[","") | replace("]","")   %}
+{% set subfields_to_javascript = fieldname_subfields | replace("u'","'")  %}
+{% set fieldname_subfields = fieldname_subfields | replace("u'","'") | replace("'","") | replace("[","") | replace("]","")  %}
+
 
 <ol>
 {%- for element in values -%}
@@ -19,6 +18,7 @@
 
 {% set fieldslist = fieldname_subfields.split(',') %}
 {%- for field in fieldslist -%}
+  <li>{{ field }}</li>
 	{%- set fieldvalues = data[field] -%}
 	{% if fieldvalues %}
 		{%- for val in fieldvalues -%}
