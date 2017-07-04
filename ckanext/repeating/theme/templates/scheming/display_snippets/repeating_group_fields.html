@@ -21,15 +21,15 @@
 </ol>
 
 {%- set fieldsnamelist = fieldname_subfields.split(',') -%}
-{%- set fieldslabellist = fieldname_subfields.split(',') -%}
+{%- set fieldslabellist = fieldlabel_subfields.split(',') -%}
 {%- for field in fieldsnamelist -%}
 {%  set field =  field | replace(" ","") %}
 	{%- set fieldvalues = data[field] -%}
 	{% if fieldvalues %}
 		{%- for val in fieldvalues -%}
 			<div id="fields_repeating_container_{{ field }}_{{ loop.index}}">  
-				{% set label = fieldslabellist[loop.index] %}			  	
-				<span style="width: 5%">{{  label }}</span> <span>{{ val }}</span>
+				{% set label = fieldslabellist[loop.index-1] %}			  	
+				<span style="width: 10%">{{  label }}: </span> <span>{{ val }}</span>
 			</div>
 		{%- endfor -%}
 	{% else %}
