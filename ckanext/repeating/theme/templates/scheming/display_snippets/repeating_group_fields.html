@@ -9,9 +9,9 @@
 <ol>
 {%- for element in values -%}
 <div style="padding: 10px">
-<div id="fields_repeating_container_{{ field.field_name }}_{{ loop.index}} " style="background-color: #F5F5F5">
-</div">
+<div id="fields_repeating_container_{{ field.field_name }}_{{ loop.index}}" style="background-color: #F5F5F5">
   <li>{{ element }}</li>
+</div>
 </div>
 {%- endfor -%}
 <input type="button" id="auxButton" onclick="grouping({{ values|length }}, '{{ field.field_name }}', {{ fieldname_subfields }} )" style="display:none;">  
@@ -22,7 +22,7 @@
 	{%- set fieldvalues = data[field] -%}
 	{% if fieldvalues %}
 		{%- for val in fieldvalues -%}
-			<div id="fields_repeating_container_'{{ val }}'_{{ loop.index}}">  
+			<div id="fields_repeating_container_'{{ field }}'_{{ loop.index}}">  
 			  	{{ val }}
 			</div>
 		{%- endfor -%}
