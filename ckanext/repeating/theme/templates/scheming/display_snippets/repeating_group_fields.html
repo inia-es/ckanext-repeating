@@ -14,7 +14,7 @@
   <li>{{ element }}</li>
 </div>
 {%- endfor -%}
-<input type="button" id="auxButton" onclick="grouping({{ values|length }}, '{{ field.field_name }}', {{ fieldname_subfields }} )">  
+<input type="button" id="auxButton" onclick="grouping({{ values|length }}, '{{ field.field_name }}', {{ fieldname_subfields }} )" style="display:none;">  
 </ol>
 
 {% set fieldslist = fieldname_subfields.split(',') %}
@@ -22,8 +22,8 @@
 	{%- set fieldvalues = data[field] -%}
 	{% if fieldvalues %}
 		{%- for val in fieldvalues -%}
-			<div id="fields_repeating_container_'{{ fieldvalues }}'_{{ loop.index}}">  
-			  <li>{{ val }}</li>
+			<div id="fields_repeating_container_'{{ val }}'_{{ loop.index}}">  
+			  	{{ val }}
 			</div>
 		{%- endfor -%}
 	{% else %}
