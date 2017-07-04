@@ -14,9 +14,12 @@
 <input type="button" id="auxButton" onclick="grouping({{ values|length }}, '{{ field.field_name }}', {{ fieldname_subfields }} )">  
 </ol>
 
-{% set list1 = fieldname_subfields.split(',') %}
-{%- for item in list1 -%}
-  <li>{{ item }}</li>
+{% set fieldslist = fieldname_subfields.split(',') %}
+{%- for field in fieldslist -%}
+	{%- set fieldvalues = data[field] -%}
+	{%- for val in fieldvalues -%}
+		  <li>{{ val }}</li>
+	{%- endfor -%}
 {%- endfor -%}
 
 
