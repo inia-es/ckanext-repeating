@@ -16,10 +16,16 @@
 
 {% set fieldslist = fieldname_subfields.split(',') %}
 {%- for field in fieldslist -%}
+<li>{{ field }}</li>
+	
 	{%- set fieldvalues = data[field] -%}
-	{%- for val in fieldvalues -%}
-		  <li>{{ val }}</li>
-	{%- endfor -%}
+	{% if fieldvalues %}
+		{%- for val in fieldvalues -%}
+			  <li>{{ val }}</li>
+		{%- endfor -%}
+	{% else %}
+		 <li>no data in fieldvalues</li>
+	{% endif %}
 {%- endfor -%}
 
 
@@ -35,8 +41,10 @@ for (i = 0; i < num_elements; i++) {
 	var index = i+1;
 	var elementid = 'fields_repeating_container_'+label+'_'+index;
 	for (j = 0; j < subfields.length; j++) {
-		var subfield = document.getElementById('fields_repeating_container_'+subfields[j]+'_'+index);
-		var group_fields_div = document.getElementById('fields_repeating_container_'+label+'_'+index);
+		var subfieldId='fields_repeating_container_'+subfields[j]+'_'+index;
+		var subfield = document.getElementById(subfieldId);
+		var group_fields_vidId = 'fields_repeating_container_'+label+'_'+index;
+		var group_fields_div = document.getElementById(group_fields_vidId);
 		group_fields_div.appendChild(subfield);
 	}
 }
