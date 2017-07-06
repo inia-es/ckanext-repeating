@@ -19,8 +19,10 @@ function MoverDiv(elementid, subfields, index, next){
        		var subfield = document.getElementById('fields_repeating_container_'+subfields[i]+'_'+index);
 		var groupfields = document.getElementById(elementid);
 		groupfields.style.background ='#F5F5F5'
-		groupfields.appendChild(subfield);
-		
+		if (groupfields && subfield)
+		{
+			groupfields.appendChild(subfield);
+		}	
 		/**mostrando los siguientes subcampos*/
 		var nextsubelementid = 'fields_repeating_container_'+subfields[i]+'_'+next;
 		document.getElementById(nextsubelementid).style.display = 'block';

@@ -91,13 +91,18 @@ function grouping(num_elements,label,subfields)
 	for (i = 0; i < num_elements; i++) {
 		var index = i+1;
 		var elementid = 'fields_repeating_container_'+label+'_'+index;
-		for (j = 0; j < subfields.length; j++) {
-			var subfieldId='fields_repeating_container_'+subfields[j]+'_'+index;
-			var subfield = document.getElementById(subfieldId);
-			var group_fields_vidId = 'fields_repeating_container_'+label+'_'+index;
-			var group_fields_div = document.getElementById(group_fields_vidId);
-			group_fields_div.appendChild(subfield);
-		}
+		var group_fields_div = document.getElementById(elementid);
+		if (group_fields_div)
+		{
+			for (j = 0; j < subfields.length; j++) {
+				var subfieldId='fields_repeating_container_'+subfields[j]+'_'+index;
+				var subfield = document.getElementById(subfieldId);
+				if (subfield)
+				{
+					group_fields_div.appendChild(subfield);
+				}
+			}
+		}	
 	}
 }
 </script>
