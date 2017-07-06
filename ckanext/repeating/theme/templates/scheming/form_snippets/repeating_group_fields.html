@@ -8,9 +8,14 @@
 {% set fieldname_subfields = fieldname_subfields | replace("u'","'")  %}
 
 {%- for element in values -%}
+<div style="padding: 5px;">
      {% if loop.index == 1 %}
-            <div id="fields_repeating_container_{{ field.label }}_1" style="padding: 5px;">	
-		{% if element == '' or values[loop.index] == '' %}
+	{% if element =='' %}
+            <div id="fields_repeating_container_{{ field.label }}_1" ">	
+	{% else %}
+	    <div id="fields_repeating_container_{{ field.label }}_1" style="background-color: #F5F5F5;">	
+	{% endif %}
+           	{% if element == '' or values[loop.index] == '' %}
 	           <input id="button_fields_repeating_container_{{ field.label }}_1" type="button" value="Agregar {{ field.label }}" onclick="add_field_in_group({{ loop.index }}, '{{ field.label }}', {{ fieldname_subfields }} )" style="font-size: 12px; padding: 1px; float: right;"> 
 		{% endif %} 
 	
@@ -30,7 +35,7 @@
 	{% set ocultoid = loop.index|string %}
         {% if element == '' %}
 		{% set visibilidad = "display:none;" %}
-		<div id="fields_repeating_container_{{ field.label }}_{{ ocultoid }}" style="{{ visibilidad }}; padding: 5px;">
+		<div id="fields_repeating_container_{{ field.label }}_{{ ocultoid }}" style="{{ visibilidad }};">
 			{% if (loop.index < values|length ) %}
 	    			{% set buttonid = loop.index|string %}
          		       <input id="button_fields_repeating_container_{{ field.label }}_{{ buttonid }}" type="button" value="Agregar {{ field.label }}" onclick="add_field_in_group({{ loop.index }}, '{{ field.label }}', {{ fieldname_subfields }} )" style="font-size: 12px; padding: 1px; float: right;"> 
@@ -50,7 +55,7 @@
 
 	{% else %}
 		{% set visibilidad = "display:block;" %}
-		<div  id="fields_repeating_container_{{ field.label }}_{{ ocultoid }}" style="{{ visibilidad }};  background-color: #F5F5F5; padding: 5px;">
+		<div  id="fields_repeating_container_{{ field.label }}_{{ ocultoid }}" style="{{ visibilidad }};  background-color: #F5F5F5;">
 			{% if values[loop.index] == '' %}			
 			{% if (loop.index < values|length ) %}
 	    			{% set buttonid = loop.index|string %}
@@ -74,6 +79,7 @@
  {% endif %}	
    {%- endfor -%}
  <input id="auxButton" type="button" value="agrupar" onclick="grouping({{ values|length }}, '{{ field.label }}', {{ fieldname_subfields }} )" style="font-size: 12px; padding: 1px; float: right; display:none;"> 
+</div>
 </div>
 
 {% resource 'ckanext-repeating/main' %}
