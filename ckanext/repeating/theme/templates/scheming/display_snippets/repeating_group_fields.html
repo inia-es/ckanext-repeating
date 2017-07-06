@@ -17,7 +17,7 @@
 		</div>
 	</div>
 {%- endfor -%}
-<input type="button" id="auxButton" onclick="grouping({{ values|length }}, '{{ field.field_name }}', {{ fieldname_subfields_to_js }} )" style="display:block;">  
+<input type="button" id="auxButton" onclick="grouping({{ values|length }}, '{{ field.field_name }}', {{ fieldname_subfields_to_js }} )" style="display:none;">  
 </ol>
 
 {%- set fieldsnamelist = fieldname_subfields.split(',') -%}

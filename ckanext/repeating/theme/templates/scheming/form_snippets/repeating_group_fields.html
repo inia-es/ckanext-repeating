@@ -54,7 +54,7 @@
 			{% if values[loop.index] == '' %}			
 			{% if (loop.index < values|length ) %}
 	    			{% set buttonid = loop.index|string %}
-         		       <input id="button_fields_repeating_container_{{ field.label }}_{{ buttonid }}" type="button" value="Agregar {{ field.label }}" onclick="add_field_in_group({{ loop.index }}, '{{ field.label }}', {{ fieldname_subfields }} )" style="font-size: 12px; padding: 1px; float: right;"> 
+         		       <input id="button_fields_repeating_container_{{ field.label }}_{{ buttonid }}" type="button" value="Agregar {{ field.label }}" onclick="add_field_in_group({{ loop.index }}, '{{ field.label }}', {{ fieldname_subfields }} )" style="font-size: 12px; padding: 1px; float: right; background-color: #F5F5F5"> 
 			{% endif %}
 			{% endif %}
 
@@ -84,6 +84,7 @@
 var auxButton = document.getElementById('auxButton');
 if(auxButton){
 	auxButton.click();
+	auxButton.id="auxButtonold"
 }
 function grouping(num_elements,label,subfields)
 {
