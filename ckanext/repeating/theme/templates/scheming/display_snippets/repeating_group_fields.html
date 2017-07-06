@@ -17,32 +17,39 @@
 		</div>
 	</div>
 {%- endfor -%}
-<input type="button" id="auxButton" onclick="grouping({{ values|length }}, '{{ field.field_name }}', {{ fieldname_subfields_to_js }} )" style="display:none;">  
+<input type="button" name="auxButton" onclick="grouping({{ values|length }}, '{{ field.field_name }}', {{ fieldname_subfields_to_js }} )" style="display:none;">  
 </ol>
 
 {%- set fieldsnamelist = fieldname_subfields.split(',') -%}
 {%- set fieldslabellist = fieldlabel_subfields.split(',') -%}
 {%- for field in fieldsnamelist -%}
-{%  set field =  field | replace(" ","") %}
+{% set currentloopfield = loop.index %}
+{% set field =  field | replace(" ","") %}
 	{%- set fieldvalues = data[field] -%}
 	{% if fieldvalues %}
 		{%- for val in fieldvalues -%}
 			<div id="fields_repeating_container_{{ field }}_{{ loop.index}}">  
-				{% set label = fieldslabellist[loop.index-1] %}			  	
+				{% set label = fieldslabellist[currentloopfield -1] %}			  	
 				<span style="width: 10%">{{  label }}: </span> <span>{{ val }}</span>
 			</div>
 		{%- endfor -%}
 	{% else %}
-		 <li>no data in fieldvalues</li>
+		 <!--<li>no data in fieldvalues</li>-->
 	{% endif %}
 {%- endfor -%}
 
 
 <script>
-var auxButton = document.getElementById('auxButton');
-if(auxButton){
-	auxButton.click();
+
+var auxButton = document.getElementByName('auxButton');
+for (i = 0 ; i<auxButton.length ; i++)
+{
+	if(auxButton[i]){
+		auxButton[i].click();
+	}
+
 }
+
 function grouping(num_elements,label,subfields)
 {
 	for (i = 0; i < num_elements; i++) {
