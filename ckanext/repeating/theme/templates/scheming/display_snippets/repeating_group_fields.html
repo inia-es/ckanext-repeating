@@ -17,7 +17,7 @@
 		</div>
 	</div>
 {%- endfor -%}
-<input type="button" name="auxButton" onclick="grouping({{ values|length }}, '{{ field.field_name }}', {{ fieldname_subfields_to_js }} )" style="display:block;">  
+<input type="button" id="auxButton" onclick="grouping({{ values|length }}, '{{ field.field_name }}', {{ fieldname_subfields_to_js }} )" style="display:block;">  
 </ol>
 
 {%- set fieldsnamelist = fieldname_subfields.split(',') -%}
@@ -41,14 +41,10 @@
 
 <script>
 
-var auxButton = document.getElementsByName('auxButton');
-for (i = 0 ; i<auxButton.length ; i++)
-{
-	if(auxButton[i]){
-		auxButton[i].click();
-	}
-
-}
+var auxButton = document.getElementById('auxButton');
+	if(auxButton){
+		auxButton.click();
+        }
 
 function grouping(num_elements,label,subfields)
 {
