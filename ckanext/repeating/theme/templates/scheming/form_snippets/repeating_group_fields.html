@@ -84,7 +84,6 @@
 var auxButton = document.getElementById('auxButton');
 if(auxButton){
 	auxButton.click();
-	auxButton.id="auxButtonold"
 }
 function grouping(num_elements,label,subfields)
 {
@@ -100,6 +99,17 @@ function grouping(num_elements,label,subfields)
 				if (subfield)
 				{
 					group_fields_div.appendChild(subfield);
+					/***Esta condicion es para saber si ya no se han creado mas campos y subcampos, para cambiar de ID al 						boton auxButton que es el que agrupa a los subcampos, se realiza esta condicion, pues que cada vez que 						se crea un subcampo (se llama a esta funcion)**/
+					var elementidaux = 'fields_repeating_container_'+label+'_'+(index+1);
+					var elementidauxdiv=document.getElementById(elementidaux);
+					/**Si no existe el siguiente elemento principal (Group) y si el subcampo actual es el ultimo de los 						subcampos**/
+					if (!elementidauxdiv && j==(subfields.length-1))
+					{
+						var auxButton = document.getElementById('auxButton');
+						if(auxButton){
+							auxButton.id="auxButtonold";
+						}
+					}
 				}
 			}
 		}	
