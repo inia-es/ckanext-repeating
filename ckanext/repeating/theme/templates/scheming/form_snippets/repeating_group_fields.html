@@ -11,10 +11,11 @@
 <div style="padding: 5px;">
      {% if loop.index == 1 %}
 	{% if element =='' %}
-            <div id="fields_repeating_container_{{ field.label }}_1" ">	
+           {% set color = "background-color: #FFFFFF;" %}
 	{% else %}
-	    <div id="fields_repeating_container_{{ field.label }}_1" style="background-color: #F5F5F5;">	
+	   {% set color = "background-color: #F5F5F5;" %}	
 	{% endif %}
+	      <div id="fields_repeating_container_{{ field.label }}_1" style="{{ color }}">
            	{% if element == '' or values[loop.index] == '' %}
 	           <input id="button_fields_repeating_container_{{ field.label }}_1" type="button" value="Agregar {{ field.label }}" onclick="add_field_in_group({{ loop.index }}, '{{ field.label }}', {{ fieldname_subfields }} )" style="font-size: 12px; padding: 1px; float: right;"> 
 		{% endif %} 
@@ -77,9 +78,10 @@
                 </div>
 	{% endif %}	    
  {% endif %}	
-   {%- endfor -%}
- <input id="auxButton" type="button" value="agrupar" onclick="grouping({{ values|length }}, '{{ field.label }}', {{ fieldname_subfields }} )" style="font-size: 12px; padding: 1px; float: right; display:none;"> 
 </div>
+{%- endfor -%}
+ <input id="auxButton" type="button" value="agrupar" onclick="grouping({{ values|length }}, '{{ field.label }}', {{ fieldname_subfields }} )" style="font-size: 12px; padding: 1px; float: right; display:none;"> 
+
 </div>
 
 {% resource 'ckanext-repeating/main' %}
