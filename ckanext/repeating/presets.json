@@ -28,6 +28,15 @@
         "validators": "repeating_text",
         "output_validators": "repeating_text_output"
       }
+    },
+   {
+      "preset_name": "quality",
+      "values": {
+        "form_snippet": "quality.html",
+        "display_snippet": "repeating_text.html",
+        "validators": "repeating_text",
+        "output_validators": "repeating_text_output"
+      }
     }
   ]
 }
