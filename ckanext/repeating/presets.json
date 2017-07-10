@@ -33,7 +33,7 @@
       "preset_name": "quality",
       "values": {
         "form_snippet": "quality.html",
-        "display_snippet": "repeating_text.html",
+        "display_snippet": "quality.html",
         "validators": "repeating_text",
         "output_validators": "repeating_text_output"
       }
