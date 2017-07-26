@@ -37,6 +37,15 @@
         "validators": "repeating_text",
         "output_validators": "repeating_text_output"
       }
+    },
+   {
+      "preset_name": "select_org_dep",
+      "values": {
+        "form_snippet": "select_org_dep.html",
+        "display_snippet": "quality.html",
+        "validators": "repeating_text",
+        "output_validators": "repeating_text_output"
+      }
     }
   ]
 }
