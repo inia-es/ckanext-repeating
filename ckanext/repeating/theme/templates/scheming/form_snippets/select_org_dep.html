@@ -5,39 +5,77 @@
     + [''] * field.get('form_blanks', 3) -%}
 
 {%- for element in values -%}
+{% if loop.index == 1 %}
+    	<div id="fields_repeating_container_{{ field.field_name }}_1" style="display:block;">
+	{%- set options=[] -%}
+	{%- set form_restrict_choices_to=field.get('form_restrict_choices_to') -%}
+	{%- if not h.scheming_field_required(field) or
+	    field.get('form_include_blank_choice', false) -%}
+	  {%- do options.append({'value': '', 'text': ''}) -%}
+	{%- endif -%}
+	{%- for c in h.scheming_field_choices(field) -%}
+	  {%- if not form_restrict_choices_to or c.value in form_restrict_choices_to -%}
+	    {%- do options.append({
+	      'value': c.value,
+	      'text': h.scheming_language_text(c.label) }) -%}
+	  {%- endif -%}
+	{%- endfor -%}
+	{%- if field.get('sorted_choices') -%}
+	  {%- set options = options|sort(case_sensitive=false, attribute='text') -%}
+	{%- endif -%}
 
-{%- set options=[] -%}
-{%- set form_restrict_choices_to=field.get('form_restrict_choices_to') -%}
-{%- if not h.scheming_field_required(field) or
-    field.get('form_include_blank_choice', false) -%}
-  {%- do options.append({'value': '', 'text': ''}) -%}
-{%- endif -%}
-{%- for c in h.scheming_field_choices(field) -%}
-  {%- if not form_restrict_choices_to or c.value in form_restrict_choices_to -%}
-    {%- do options.append({
-      'value': c.value,
-      'text': h.scheming_language_text(c.label) }) -%}
-  {%- endif -%}
-{%- endfor -%}
-{%- if field.get('sorted_choices') -%}
-  {%- set options = options|sort(case_sensitive=false, attribute='text') -%}
-{%- endif -%}
-
-{% call form.select(
-    field.field_name,
-    id='field-' + field.field_name,
-    label=h.scheming_language_text(field.label),
-    options=options,
-    selected=data[field.field_name],
-    error=errors[field.field_name],
-    classes=['control-medium'],
-    attrs=field.form_attrs if 'form_attrs' in field else {},
-    is_required=h.scheming_field_required(field)
-    )
-%}
+	{% call form.select(
+	    field.field_name,
+	    id='field-' + field.field_name,
+	    label=h.scheming_language_text(field.label),
+	    options=options,
+	    selected=data[field.field_name],
+	    error=errors[field.field_name],
+	    classes=['control-medium'],
+	    attrs=field.form_attrs if 'form_attrs' in field else {},
+	    is_required=h.scheming_field_required(field)
+	    )
+	%}
   
-  {%- snippet 'scheming/form_snippets/help_text.html', field=field -%}
-{% endcall %}
-
+	  {%- snippet 'scheming/form_snippets/help_text.html', field=field -%}
+	{% endcall %}
+ 	</div>
+{% else%}
+	{% set visibilidad = "display:none;" %}
+		 <div id="fields_repeating_container_{{ field.field_name }}_{{ loop.index }}" style="{{ visibilidad }}">
+		{%- set options=[] -%}
+		{%- set form_restrict_choices_to=field.get('form_restrict_choices_to') -%}
+		{%- if not h.scheming_field_required(field) or
+		    field.get('form_include_blank_choice', false) -%}
+		  {%- do options.append({'value': '', 'text': ''}) -%}
+		{%- endif -%}
+		{%- for c in h.scheming_field_choices(field) -%}
+		  {%- if not form_restrict_choices_to or c.value in form_restrict_choices_to -%}
+		    {%- do options.append({
+		      'value': c.value,
+		      'text': h.scheming_language_text(c.label) }) -%}
+		  {%- endif -%}
+		{%- endfor -%}
+		{%- if field.get('sorted_choices') -%}
+		  {%- set options = options|sort(case_sensitive=false, attribute='text') -%}
+		{%- endif -%}
+	
+		{% call form.select(
+		    field.field_name,
+		    id='field-' + field.field_name,
+		    label=h.scheming_language_text(field.label),
+		    options=options,
+		    selected=data[field.field_name],
+		    error=errors[field.field_name],
+		    classes=['control-medium'],
+		    attrs=field.form_attrs if 'form_attrs' in field else {},
+		    is_required=h.scheming_field_required(field)
+		    )
+		%}
+	  
+		  {%- snippet 'scheming/form_snippets/help_text.html', field=field -%}
+		{% endcall %}
+ 		</div>
+{% endif %}	
 {% endfor %}
 
