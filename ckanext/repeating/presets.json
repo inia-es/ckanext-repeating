@@ -39,7 +39,7 @@
       }
     },
    {
-      "preset_name": "select_org_dep",
+      "preset_name": "repeating_select_org_dep_in_group",
       "values": {
         "form_snippet": "select_org_dep.html",
         "display_snippet": "quality.html",
