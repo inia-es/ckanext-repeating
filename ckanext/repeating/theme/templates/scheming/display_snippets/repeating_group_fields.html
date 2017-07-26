@@ -28,10 +28,12 @@
 	{%- set fieldvalues = data[field] -%}
 	{% if fieldvalues %}
 		{%- for val in fieldvalues -%}
+			{% if val %}
 			<div id="fields_repeating_container_{{ field }}_{{ loop.index}}">  
 				{% set label = fieldslabellist[currentloopfield -1] %}			  	
-				<span style="width: 10%">{{  label }}: </span> <span>{{ val }}</span>
+				<span style="width: 15%">{{  label }}: </span> <span>{{ val }}</span>
 			</div>
+			{% endif %}
 		{%- endfor -%}
 	{% else %}
 		 <!--<li>no data in fieldvalues</li>-->
