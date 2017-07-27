@@ -40,7 +40,7 @@
 	  {%- snippet 'scheming/form_snippets/help_text.html', field=field -%}
 	{% endcall %}
 	{% set select2loop = loop.index|string %}
-	{% set filednameselect2 =  'inia'+field.field_name%}
+	{% set filednameselect2 =  'inia-'+field.field_name%}
 	<div id="select2-{{ filednameselect2 }}_{{ select2loop }}" style="display:none;">
 	{% call form.select(
 	    filednameselect2,
@@ -111,9 +111,9 @@
 <script>
 document.getElementById('field-subfield_select_org_dep_1').onchange = function() {
     if(document.getElementById('field-subfield_select_org_dep_1').value == 'INIA'){
-      document.getElementById('select2-inia_subfield_select_org_dep_1').style.display='block';
+      document.getElementById('select2-inia-subfield_select_org_dep_1').style.display='block';
     }else{
-      document.getElementById('select2-inia_subfield_select_org_dep_1').style.display='none';
+      document.getElementById('select2-inia-subfield_select_org_dep_1').style.display='none';
 	}    
 }
 </script>
