@@ -26,7 +26,7 @@
 
 	{% call form.select(
 	    field.field_name,
-	    id='field-' + field.field_name + '_' + loop.index,
+	    id='field-' + field.field_name + '_' + loop.index|string,
 	    label=h.scheming_language_text(field.label),
 	    options=options,
 	    selected=data[field.field_name],
@@ -68,7 +68,7 @@
 	
 		{% call form.select(
 		    field.field_name,
-		    id='field-' + field.field_name + '_' + loop.index,
+		    id='field-' + field.field_name + '_' + loop.index|string,
 		    label=h.scheming_language_text(field.label),
 		    options=options,
 		    selected=data[field.field_name],
