@@ -92,6 +92,7 @@
 {% endif %}	
 {% endfor %}
 <script>
+/**
 $("#field-subfield_select_org_dep_1").change(function(){
     if($(this).val() == 'INIA'){
       $("#select2").show();
@@ -100,6 +101,11 @@ $("#field-subfield_select_org_dep_1").change(function(){
     }
 
 });
+*/
+if(document.getElementById('selectid').value == "INIA") {
+      $("#select2").show();
+}
+
 </script>
 {% resource 'ckanext-repeating/main' %}
 
