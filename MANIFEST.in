@@ -1,4 +1,3 @@
-recursive-include ckanext *.html *.json *.yaml
 recursive-include    ckanext/repeating/theme/templates                            *
 recursive-include    ckanext/repeating/theme/public                               *
 recursive-include    ckanext/repeating *.html *.json *.js *.less *.css
