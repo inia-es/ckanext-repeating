@@ -88,24 +88,17 @@
   <option value="3">Val 3</option> 
 </select>
  		</div>
-
 {% endif %}	
 {% endfor %}
 <script>
-/**
-$("#field-subfield_select_org_dep_1").change(function(){
-    if($(this).val() == 'INIA'){
-      $("#select2").show();
+document.getElementById('field-subfield_select_org_dep_1').onchange = function() {
+    if(document.getElementById('field-subfield_select_org_dep_1').value == 'INIA'){
+      document.getElementById('field-subfield_select_org_dep_1').style.display='block';
     }else{
-      $("#select2").hide();
-    }
-
-});
-*/
-if(document.getElementById('field-subfield_select_org_dep_1').value == "INIA") {
-      $("#select2").show();
+      document.getElementById('field-subfield_select_org_dep_1').style.display='none';
+	}    
 }
-
 </script>
+
 {% resource 'ckanext-repeating/main' %}
 
