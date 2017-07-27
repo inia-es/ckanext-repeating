@@ -26,7 +26,7 @@
 
 	{% call form.select(
 	    field.field_name,
-	    id='field-' + field.field_name,
+	    id='field-' + field.field_name + '_' + loop.index,
 	    label=h.scheming_language_text(field.label),
 	    options=options,
 	    selected=data[field.field_name],
@@ -39,6 +39,12 @@
   
 	  {%- snippet 'scheming/form_snippets/help_text.html', field=field -%}
 	{% endcall %}
+<select id="select2" style="display:none;">
+  <option>Choose Two</option>
+  <option value="1">Val 1</option>
+  <option value="2">Val 2</option>
+  <option value="3">Val 3</option> 
+</select>
  	</div>
 {% else%}
 	{% set visibilidad = "display:none;" %}
@@ -62,7 +68,7 @@
 	
 		{% call form.select(
 		    field.field_name,
-		    id='field-' + field.field_name,
+		    id='field-' + field.field_name + '_' + loop.index,
 		    label=h.scheming_language_text(field.label),
 		    options=options,
 		    selected=data[field.field_name],
@@ -75,7 +81,24 @@
 	  
 		  {%- snippet 'scheming/form_snippets/help_text.html', field=field -%}
 		{% endcall %}
+<select id="select2" style="display:none;">
+  <option>Choose Two</option>
+  <option value="1">Val 1</option>
+  <option value="2">Val 2</option>
+  <option value="3">Val 3</option> 
+</select>
  		</div>
+
 {% endif %}	
 {% endfor %}
+<script>
+$("#field-subfield_select_org_dep_1").change(function(){
+    if($(this).val() == 3){
+      $("#select2").show();
+    }else{
+      $("#select2").hide();
+    }
+
+});
+</script>
 
