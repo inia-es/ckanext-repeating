@@ -99,7 +99,7 @@ function selectAction(num_elements,label,subfields)
 		var selectfieldId='field-' + label + '_' + loopindex;	
 				
 		document.getElementById(selectfieldId).onchange = function() {
-		    if(document.getElementById(selectfieldId).value == 'INIA'){
+		    if(document.getElementById(selectfieldId)[1].value == 'INIA'){
 			
 		      document.getElementById('field-subfield_select2_org_dep_1').style.display='block';
 		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_1').style.display='block';
