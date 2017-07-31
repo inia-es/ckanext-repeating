@@ -32,7 +32,7 @@
 	    id='field-' + field.field_name + '_' + loop.index|string,
 	    label=h.scheming_language_text(field.label),
 	    options=options,
-	    selected=data[field.field_name],
+	    selected=data[field.field_value],
 	    error=errors[field.field_name],
 	    classes=['control-medium'],
 	    attrs=field.form_attrs if 'form_attrs' in field else {},
@@ -132,6 +132,20 @@ function selectAction(num_elements,label,subfields)
 		    }else{
 		      document.getElementById('field-subfield_select2_org_dep_3').style.display='none';
 		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_3').style.display='none';
+			}    
+		}
+
+		var element = 4;
+		var selectfieldId4='field-' + label + '_' + element;	
+				
+		document.getElementById(selectfieldId4).onchange = function() {
+		    if(document.getElementById(selectfieldId4).value == 'INIA'){
+			
+		      document.getElementById('field-subfield_select2_org_dep_4').style.display='block';
+		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_4').style.display='block';
+		    }else{
+		      document.getElementById('field-subfield_select2_org_dep_4').style.display='none';
+		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_4').style.display='none';
 			}    
 		}
 
