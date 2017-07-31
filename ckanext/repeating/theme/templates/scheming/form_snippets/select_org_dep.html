@@ -1,5 +1,8 @@
 {% import 'macros/form.html' as form %}
 
+{% set fieldname_subfields = field.field_name_subfields|string %}
+{% set fieldname_subfields_to_js = fieldname_subfields | replace("u'","'")  %}
+
 
 {%- set values = data.get(field.field_name, [])
     + [''] * field.get('form_blanks', 3) -%}
@@ -72,28 +75,40 @@
 		    attrs=field.form_attrs if 'form_attrs' in field else {},
 		    is_required=h.scheming_field_required(field)
 		    )
-		%}
-	  
+		%} 
 		  {%- snippet 'scheming/form_snippets/help_text.html', field=field -%}
 		{% endcall %}
-<select id="select2" style="display:none;">
-  <option>Choose Two</option>
-  <option value="1">Val 1</option>
-  <option value="2">Val 2</option>
-  <option value="3">Val 3</option> 
-</select>
  		</div>
 {% endif %}	
 {% endfor %}
+<input type="button" id="auxButtonSelectDepartament" onclick="selectAction({{ values|length }}, '{{ field.field_name }}', {{ fieldname_subfields_to_js }} )" style="display:none;">  
+</ol>
 <script>
-document.getElementById('field-subfield_select_org_dep_1').onchange = function() {
-    if(document.getElementById('field-subfield_select_org_dep_1').value == 'INIA'){
-      document.getElementById('field-subfield_select2_org_dep_1').style.display='block';
-      document.getElementById('fields_repeating_container_subfield_select2_org_dep_1').style.display='block';
-    }else{
-      document.getElementById('field-subfield_select2_org_dep_1').style.display='none';
-      document.getElementById('fields_repeating_container_subfield_select2_org_dep_1').style.display='none';
-	}    
+
+var auxButtonSelectDepartament = document.getElementById('auxButtonSelectDepartament');
+  if(auxButtonSelectDepartament){
+	auxButtonSelectDepartament.click();
+	auxButtonSelectDepartament.id="auxButtonSelectDepartamentold"
+  }
+
+function selectAction(num_elements,label,subfields)
+{
+	for (i = 0; i<num_elements; i++)
+	{
+		var loopindex = i+1;
+		var selectfieldId='field-' + label + '_' + loopindex;	
+				
+		document.getElementById(selectfieldId).onchange = function() {
+		    if(document.getElementById(selectfieldId).value == 'INIA'){
+			
+		      document.getElementById('field-subfield_select2_org_dep_1').style.display='block';
+		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_1').style.display='block';
+		    }else{
+		      document.getElementById('field-subfield_select2_org_dep_1').style.display='none';
+		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_1').style.display='none';
+			}    
+		}
+	}
 }
 </script>
 
