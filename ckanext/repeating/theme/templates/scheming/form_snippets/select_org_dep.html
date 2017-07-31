@@ -40,7 +40,7 @@
 	  {%- snippet 'scheming/form_snippets/help_text.html', field=field -%}
 	{% endcall %}
 	{% set select2loop = loop.index|string %}
-	{% set filednameselect2 =  'inia-'+field.field_name%}
+	{% set filednameselect2 =  'subfield-inia-'+field.field_name%}
 	<div id="select2-{{ filednameselect2 }}_{{ select2loop }}" style="display:none;">
 	{% call form.select(
 	    filednameselect2,
@@ -56,13 +56,6 @@
 	%}
   	{% endcall %}
 	</div>
-
-<select id="select2" style="display:none;">
-  <option>Choose Two</option>
-  <option value="1">Val 1</option>
-  <option value="2">Val 2</option>
-  <option value="3">Val 3</option> 
-</select>
  	</div>
 {% else%}
 	{% set visibilidad = "display:none;" %}
