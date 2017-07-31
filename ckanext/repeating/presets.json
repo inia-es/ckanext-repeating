@@ -45,6 +45,14 @@
         "validators": "repeating_text",
         "output_validators": "repeating_text_output"
       }
+    },
+   {
+      "preset_name": "repeating_select2_org_dep_in_group",
+      "values": {
+        "form_snippet": "select2_org_dep.html",
+        "validators": "repeating_text",
+        "output_validators": "repeating_text_output"
     }
+  }
   ]
 }
