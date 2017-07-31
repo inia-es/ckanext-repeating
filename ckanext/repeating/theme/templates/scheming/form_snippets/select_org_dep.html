@@ -89,8 +89,10 @@
 document.getElementById('field-subfield_select_org_dep_1').onchange = function() {
     if(document.getElementById('field-subfield_select_org_dep_1').value == 'INIA'){
       document.getElementById('field-subfield_select2_org_dep_1').style.display='block';
+      document.getElementById('fields_repeating_container_subfield_select2_org_dep_1').style.display='block';
     }else{
       document.getElementById('field-subfield_select2_org_dep_1').style.display='none';
+      document.getElementById('fields_repeating_container_subfield_select2_org_dep_1').style.display='none';
 	}    
 }
 </script>
