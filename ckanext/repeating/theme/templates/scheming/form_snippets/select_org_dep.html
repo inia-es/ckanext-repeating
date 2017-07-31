@@ -93,13 +93,12 @@ var auxButtonSelectDepartament = document.getElementById('auxButtonSelectDeparta
 
 function selectAction(num_elements,label,subfields)
 {
-	for (i = 0; i<num_elements; i++)
-	{
-		var loopindex = i+1;
-		var selectfieldId='field-' + label + '_' + loopindex;	
+	
+		var element = 1;
+		var selectfieldId1='field-' + label + '_' + element;	
 				
-		document.getElementById(selectfieldId).onchange = function() {
-		    if(document.getElementById(selectfieldId)[1].value == 'INIA'){
+		document.getElementById(selectfieldId1).onchange = function() {
+		    if(document.getElementById(selectfieldId1).value == 'INIA'){
 			
 		      document.getElementById('field-subfield_select2_org_dep_1').style.display='block';
 		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_1').style.display='block';
@@ -108,7 +107,35 @@ function selectAction(num_elements,label,subfields)
 		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_1').style.display='none';
 			}    
 		}
-	}
+		var element = 2;
+		var selectfieldId2='field-' + label + '_' + element;	
+				
+		document.getElementById(selectfieldId2).onchange = function() {
+		    if(document.getElementById(selectfieldId2).value == 'INIA'){
+			
+		      document.getElementById('field-subfield_select2_org_dep_2').style.display='block';
+		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_2').style.display='block';
+		    }else{
+		      document.getElementById('field-subfield_select2_org_dep_2').style.display='none';
+		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_2').style.display='none';
+			}    
+		}
+
+		var element = 3;
+		var selectfieldId3='field-' + label + '_' + element;	
+				
+		document.getElementById(selectfieldId3).onchange = function() {
+		    if(document.getElementById(selectfieldId3).value == 'INIA'){
+			
+		      document.getElementById('field-subfield_select2_org_dep_3').style.display='block';
+		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_3').style.display='block';
+		    }else{
+		      document.getElementById('field-subfield_select2_org_dep_3').style.display='none';
+		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_3').style.display='none';
+			}    
+		}
+
+
 }
 </script>
 
