@@ -3,21 +3,12 @@
 {% set fieldname_subfields = field.field_name_subfields|string %}
 {% set fieldname_subfields_to_js = fieldname_subfields | replace("u'","'")  %}
 
-{%- set values = data.get(field.field_name, []) -%}
+{%- set values = data.get(field.field_name, [])
+           + [''] * field.get('form_blanks', 3)-%}
 
 {%- for element in values -%}
 
-{% if element %}
-<p>
-	{{ element }}
-</p>
-{% else %}
-<p>
-	No element
-</p>
-{% endif %}
-
-{% if loop.index == 1 %}
+% if loop.index == 1 %}
     	<div id="fields_repeating_container_{{ field.field_name }}_1" style="display:block;">
 	{%- set options=[] -%}
 	{%- set form_restrict_choices_to=field.get('form_restrict_choices_to') -%}
@@ -53,7 +44,7 @@
 	{% endcall %}
 	
  	</div>
-{% else%}
+{% else %}
 	{% set visibilidad = "display:block;" %}
 	{%- if element == '' -%}
 		{% set visibilidad = "display:none;" %}
