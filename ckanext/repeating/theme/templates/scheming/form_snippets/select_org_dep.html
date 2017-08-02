@@ -101,23 +101,24 @@ function selectAction(num_elements,label,subfields)
 		var selectfieldId1='field-' + label + '-' + element;	
 		document.getElementById(selectfieldId1).onchange = function() {
 		    if(document.getElementById(selectfieldId1).value == 'INIA'){
-		      document.getElementById('field-subfield_select2_org_dep-1').style.display='block';
-		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_1').style.display='block';
+		      document.getElementById('field-' + subfields[0] + '-1').style.display='block';
+		      document.getElementById('fields_repeating_container_' + subfields[0] + '_1').style.display='block';
 		    }else{
-		      document.getElementById('field-subfield_select2_org_dep-1').style.display='none';
-		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_1').style.display='none';
+		      document.getElementById('field-' + subfields[0] + '-1').style.display='none';
+		      document.getElementById('field-' + subfields[0] + '-1').value='';
+		      document.getElementById('fields_repeating_container_' + subfields[0] + '_1').style.display='none';
 			}    
 		}
 		var element = 2;
 		var selectfieldId2='field-' + label + '-' + element;	
 				
 		document.getElementById(selectfieldId2).onchange = function() {
-		    if(document.getElementById(selectfieldId2).value == 'INIA'){
-			
+		    if(document.getElementById(selectfieldId2).value == 'INIA'){			
 		      document.getElementById('field-subfield_select2_org_dep-2').style.display='block';
 		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_2').style.display='block';
 		    }else{
 		      document.getElementById('field-subfield_select2_org_dep-2').style.display='none';
+		      document.getElementById('field-subfield_select2_org_dep-2').value='';
 		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_2').style.display='none';
 			}    
 		}
@@ -126,12 +127,12 @@ function selectAction(num_elements,label,subfields)
 		var selectfieldId3='field-' + label + '-' + element;	
 				
 		document.getElementById(selectfieldId3).onchange = function() {
-		    if(document.getElementById(selectfieldId3).value == 'INIA'){
-			
+		    if(document.getElementById(selectfieldId3).value == 'INIA'){			
 		      document.getElementById('field-subfield_select2_org_dep-3').style.display='block';
 		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_3').style.display='block';
 		    }else{
 		      document.getElementById('field-subfield_select2_org_dep-3').style.display='none';
+		      document.getElementById('field-subfield_select2_org_dep-3').value='';
 		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_3').style.display='none';
 			}    
 		}
@@ -140,12 +141,12 @@ function selectAction(num_elements,label,subfields)
 		var selectfieldId4='field-' + label + '-' + element;	
 				
 		document.getElementById(selectfieldId4).onchange = function() {
-		    if(document.getElementById(selectfieldId4).value == 'INIA'){
-			
+		    if(document.getElementById(selectfieldId4).value == 'INIA'){			
 		      document.getElementById('field-subfield_select2_org_dep-4').style.display='block';
 		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_4').style.display='block';
 		    }else{
 		      document.getElementById('field-subfield_select2_org_dep-4').style.display='none';
+		      document.getElementById('field-subfield_select2_org_dep-4').value='';
 		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_4').style.display='none';
 			}    
 		}
