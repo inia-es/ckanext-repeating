@@ -3,8 +3,7 @@
 {% set fieldname_subfields = field.field_name_subfields|string %}
 {% set fieldname_subfields_to_js = fieldname_subfields | replace("u'","'")  %}
 
-{%- set values = data.get(field.field_name, [])
-    + [''] * field.get('form_blanks', 3) -%}
+{%- set values = data.get(field.field_name, []) -%}
 
 {%- for element in values -%}
 
@@ -55,7 +54,10 @@
 	
  	</div>
 {% else%}
-	{% set visibilidad = "display:none;" %}
+	{% set visibilidad = "display:block;" %}
+	{%- if element == '' -%}
+		{% set visibilidad = "display:none;" %}
+	{% endif %} 
 		 <div id="fields_repeating_container_{{ field.field_name }}_{{ loop.index }}" style="{{ visibilidad }}">
 		{%- set options=[] -%}
 		{%- set form_restrict_choices_to=field.get('form_restrict_choices_to') -%}
@@ -79,7 +81,7 @@
 		    id='field-' + field.field_name + '-' ~ loop.index,
 		    label=h.scheming_language_text(field.label + ' ' ~ loop.index),
 		    options=options,
-		    selected=data[field.field_name + '-' ~ loop.index],
+		    selected=element,
 		    error=errors[field.field_name + '-' ~ loop.index],
 		    classes=['control-medium'],
 		    attrs=field.form_attrs if 'form_attrs' in field else {},
@@ -106,10 +108,8 @@ function selectAction(num_elements,label,subfields)
 	
 		var element = 1;
 		var selectfieldId1='field-' + label + '-' + element;	
-				
 		document.getElementById(selectfieldId1).onchange = function() {
 		    if(document.getElementById(selectfieldId1).value == 'INIA'){
-			
 		      document.getElementById('field-subfield_select2_org_dep-1').style.display='block';
 		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_1').style.display='block';
 		    }else{
