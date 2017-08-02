@@ -27,12 +27,12 @@
 	{%- endif -%}
 
 	{% call form.select(
-	    field.field_name + '_' + loop.index|string,
-	    id='field-' + field.field_name + '_' + loop.index|string,
-	    label=h.scheming_language_text(field.label),
+	    field.field_name + '-' + ~loop.index,
+	    id='field-' + field.field_name + '-' + ~loop.index,
+	    label=h.scheming_language_text(field.label+ '-' + ~loop.index),
 	    options=options,
-	    selected=data[field.field_name + '_' + loop.index|string],
-	    error=errors[field.field_name + '_' + loop.index|string],
+	    selected=data[field.field_name + '-' + ~loop.index],
+	    error=errors[field.field_name + '-' + ~loop.index],
 	    classes=['control-medium'],
 	    attrs=field.form_attrs if 'form_attrs' in field else {},
 	    is_required=h.scheming_field_required(field)
@@ -64,12 +64,12 @@
 		{%- endif -%}
 	
 		{% call form.select(
-		    field.field_name,
-		    id='field-' + field.field_name + '_' + loop.index|string,
-		    label=h.scheming_language_text(field.label),
+		    field.field_name + '-' + ~loop.index,
+		    id='field-' + field.field_name + '-' + ~loop.index,
+		    label=h.scheming_language_text(field.label + '-' + ~loop.index),
 		    options=options,
-		    selected=data[field.field_name],
-		    error=errors[field.field_name],
+		    selected=data[field.field_name + '-' + ~loop.index],
+		    error=errors[field.field_name + '-' + ~loop.index],
 		    classes=['control-medium'],
 		    attrs=field.form_attrs if 'form_attrs' in field else {},
 		    is_required=h.scheming_field_required(field)
@@ -99,10 +99,10 @@ function selectAction(num_elements,label,subfields)
 		document.getElementById(selectfieldId1).onchange = function() {
 		    if(document.getElementById(selectfieldId1).value == 'INIA'){
 			
-		      document.getElementById('field-subfield_select2_org_dep_1').style.display='block';
+		      document.getElementById('field-subfield_select2_org_dep-1').style.display='block';
 		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_1').style.display='block';
 		    }else{
-		      document.getElementById('field-subfield_select2_org_dep_1').style.display='none';
+		      document.getElementById('field-subfield_select2_org_dep-1').style.display='none';
 		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_1').style.display='none';
 			}    
 		}
@@ -112,10 +112,10 @@ function selectAction(num_elements,label,subfields)
 		document.getElementById(selectfieldId2).onchange = function() {
 		    if(document.getElementById(selectfieldId2).value == 'INIA'){
 			
-		      document.getElementById('field-subfield_select2_org_dep_2').style.display='block';
+		      document.getElementById('field-subfield_select2_org_dep-2').style.display='block';
 		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_2').style.display='block';
 		    }else{
-		      document.getElementById('field-subfield_select2_org_dep_2').style.display='none';
+		      document.getElementById('field-subfield_select2_org_dep-2').style.display='none';
 		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_2').style.display='none';
 			}    
 		}
@@ -126,10 +126,10 @@ function selectAction(num_elements,label,subfields)
 		document.getElementById(selectfieldId3).onchange = function() {
 		    if(document.getElementById(selectfieldId3).value == 'INIA'){
 			
-		      document.getElementById('field-subfield_select2_org_dep_3').style.display='block';
+		      document.getElementById('field-subfield_select2_org_dep-3').style.display='block';
 		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_3').style.display='block';
 		    }else{
-		      document.getElementById('field-subfield_select2_org_dep_3').style.display='none';
+		      document.getElementById('field-subfield_select2_org_dep-3').style.display='none';
 		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_3').style.display='none';
 			}    
 		}
@@ -140,10 +140,10 @@ function selectAction(num_elements,label,subfields)
 		document.getElementById(selectfieldId4).onchange = function() {
 		    if(document.getElementById(selectfieldId4).value == 'INIA'){
 			
-		      document.getElementById('field-subfield_select2_org_dep_4').style.display='block';
+		      document.getElementById('field-subfield_select2_org_dep-4').style.display='block';
 		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_4').style.display='block';
 		    }else{
-		      document.getElementById('field-subfield_select2_org_dep_4').style.display='none';
+		      document.getElementById('field-subfield_select2_org_dep-4').style.display='none';
 		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_4').style.display='none';
 			}    
 		}
