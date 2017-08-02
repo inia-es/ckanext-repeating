@@ -9,13 +9,13 @@
 {%- for element in values -%}
 
 {% if element %}
-<div id="testelement">
+<p>
 	{ element }
-</div>
+</p>
 {% else %}
-<div id="testelement">
-	{ no element }
-</div>
+<p>
+	No element
+</p>
 {% endif %}
 
 {% if loop.index == 1 %}
