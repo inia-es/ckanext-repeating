@@ -27,12 +27,12 @@
 	{%- endif -%}
 
 	{% call form.select(
-	    field.field_name + '-' + ~loop.index,
-	    id='field-' + field.field_name + '-' + ~loop.index,
-	    label=h.scheming_language_text(field.label+ '-' + ~loop.index),
+	    field.field_name + '-' ~ loop.index,
+	    id='field-' + field.field_name + '-' ~ loop.index,
+	    label=h.scheming_language_text(field.label+ '-' ~ loop.index),
 	    options=options,
-	    selected=data[field.field_name + '-' + ~loop.index],
-	    error=errors[field.field_name + '-' + ~loop.index],
+	    selected=data[field.field_name + '-' ~ loop.index],
+	    error=errors[field.field_name + '-' ~ loop.index],
 	    classes=['control-medium'],
 	    attrs=field.form_attrs if 'form_attrs' in field else {},
 	    is_required=h.scheming_field_required(field)
@@ -64,12 +64,12 @@
 		{%- endif -%}
 	
 		{% call form.select(
-		    field.field_name + '-' + ~loop.index,
-		    id='field-' + field.field_name + '-' + ~loop.index,
-		    label=h.scheming_language_text(field.label + '-' + ~loop.index),
+		    field.field_name + '-' ~ loop.index,
+		    id='field-' + field.field_name + '-' ~ loop.index,
+		    label=h.scheming_language_text(field.label + '-' ~ loop.index),
 		    options=options,
-		    selected=data[field.field_name + '-' + ~loop.index],
-		    error=errors[field.field_name + '-' + ~loop.index],
+		    selected=data[field.field_name + '-' ~ loop.index],
+		    error=errors[field.field_name + '-' ~ loop.index],
 		    classes=['control-medium'],
 		    attrs=field.form_attrs if 'form_attrs' in field else {},
 		    is_required=h.scheming_field_required(field)
