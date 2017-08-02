@@ -7,6 +7,16 @@
     + [''] * field.get('form_blanks', 3) -%}
 
 {%- for element in values -%}
+{% if element
+<div id="testelement">
+	{ element }
+</div>
+{% else %}
+<div id="testelement">
+	{ no element }
+</div>
+
+{% endif %}
 {% if loop.index == 1 %}
     	<div id="fields_repeating_container_{{ field.field_name }}_1" style="display:block;">
 	{%- set options=[] -%}
@@ -29,7 +39,7 @@
 	{% call form.select(
 	    field.field_name + '-' ~ loop.index,
 	    id='field-' + field.field_name + '-' ~ loop.index,
-	    label=h.scheming_language_text(field.label+ '-' ~ loop.index),
+	    label=h.scheming_language_text(field.label+ ' ' ~ loop.index),
 	    options=options,
 	    selected=data[field.field_name + '-' ~ loop.index],
 	    error=errors[field.field_name + '-' ~ loop.index],
@@ -66,7 +76,7 @@
 		{% call form.select(
 		    field.field_name + '-' ~ loop.index,
 		    id='field-' + field.field_name + '-' ~ loop.index,
-		    label=h.scheming_language_text(field.label + '-' ~ loop.index),
+		    label=h.scheming_language_text(field.label + ' ' ~ loop.index),
 		    options=options,
 		    selected=data[field.field_name + '-' ~ loop.index],
 		    error=errors[field.field_name + '-' ~ loop.index],
