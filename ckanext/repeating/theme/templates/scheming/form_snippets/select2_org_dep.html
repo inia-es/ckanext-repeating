@@ -8,7 +8,7 @@
 
 {%- for element in values -%}
 {% set visibilidad = "display:block;" %}
-{% if element == '' %}
+{%- if element == '' -%}
 	{% set visibilidad = "display:none;" %}
 {% endif %}
     	<div id="fields_repeating_container_{{ field.field_name }}_{{ loop.index }}" style="{{ visibilidad }}">
