@@ -11,7 +11,7 @@
 {% if element == '' %}
 	{% set visibilidad = "display:none;" %}
 {% endif %}
-    	<div id="fields_repeating_container_{{ field.field_name }}_1" style="{{ visibilidad }}">
+    	<div id="fields_repeating_container_{{ field.field_name }}_{{ loop.index }}" style="{{ visibilidad }}">
 	{%- set options=[] -%}
 	{%- set form_restrict_choices_to=field.get('form_restrict_choices_to') -%}
 	{%- if not h.scheming_field_required(field) or
