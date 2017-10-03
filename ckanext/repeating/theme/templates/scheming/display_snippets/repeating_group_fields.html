@@ -62,7 +62,10 @@ function grouping(num_elements,label,subfields)
 				var subfield = document.getElementById(subfieldId);
 				if (subfield)
 				{
-					group_fields_div.appendChild(subfield);
+					if (! (subfield == 'null') )
+					{					
+						group_fields_div.appendChild(subfield);
+					}	
 				}
 			}
 		}
