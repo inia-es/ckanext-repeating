@@ -62,7 +62,8 @@ function grouping(num_elements,label,subfields)
 				var subfield = document.getElementById(subfieldId);
 				if (subfield)
 				{
-					if (! (subfield == 'null') )
+				        var value = subfield.value;
+					if (! (value == 'null') )
 					{					
 						group_fields_div.appendChild(subfield);
 					}	
