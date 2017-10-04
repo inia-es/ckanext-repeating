@@ -63,8 +63,11 @@ function grouping(num_elements,label,subfields)
 				if (subfield)
 				{
 				        var value = subfield.value;
-					if (! (value == 'CISA') )
+					if ( value === 'ninguno' )
 					{					
+					}
+					else
+					{
 						group_fields_div.appendChild(subfield);
 					}	
 				}
