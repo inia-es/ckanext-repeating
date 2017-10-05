@@ -53,6 +53,12 @@
         "validators": "repeating_text",
         "output_validators": "repeating_text_output"
     }
-  }
+   },
+   {
+      "preset_name": "custom_text",
+      "values": {
+        "form_snippet": "custom_text",
+       }
+   }
   ]
 }

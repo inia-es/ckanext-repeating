@@ -1,0 +1,25 @@
+{% import 'macros/form.html' as form %}
+
+<!-- para saber si será visible o no, en el formulario, se crea una clase nueva para el elemento div, y esta clase se personaliza en un css -->
+
+{% set displayclass = 'display' %}
+{% if field.display == 'false' %}
+	{% set displayclass = 'nodisplay' %}
+{% endif %}
+
+{% call form.input(
+    field.field_name,
+    id='field-' + field.field_name,
+    label=h.scheming_language_text(field.label),
+    placeholder=h.scheming_language_text(field.form_placeholder),
+    value=field.field_text,
+    error=errors[field.field_name],
+    classes=['control-medium', displayclass ],
+    attrs=field.form_attrs if 'form_attrs' in field else {},
+    is_required=h.scheming_field_required(field)
+    )
+%}
+    {%- snippet 'scheming/form_snippets/help_text.html', field=field -%}
+{% endcall %}
+
+{% resource 'ckanext-repeating/main' %}
