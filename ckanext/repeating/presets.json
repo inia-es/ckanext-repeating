@@ -59,6 +59,14 @@
       "values": {
         "form_snippet": "custom_text.html"
        }
+   },
+   {
+      "preset_name": "repeating_select_basic",
+      "values": {
+        "form_snippet": "select_basic.html",
+        "validators": "repeating_text",
+        "output_validators": "repeating_text_output"
+       }
    }
   ]
 }
