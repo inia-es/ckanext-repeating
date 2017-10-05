@@ -29,10 +29,15 @@
 	{% if fieldvalues %}
 		{%- for val in fieldvalues -%}
 			{% if val %}
-			<div id="fields_repeating_container_{{ field }}_{{ loop.index}}" value="{{ val }}">  
-				{% set label = fieldslabellist[currentloopfield -1] %}			  	
-				<span style="width: 15%">{{  label }}: </span> <span>{{ val }}</span>
-			</div>
+				{% set visibilidad = "display:block;" %}
+			<!-- si el valor de metadato "departamento-INIA" de autores es "ninguno" no es necesario mostrarlo en pantalla-->
+				{% if 'ninguno' == val %}
+					{% set visibilidad = "display:none;" %}
+				{% endif %}
+				<div id="fields_repeating_container_{{ field }}_{{ loop.index}}" style="{{ visibilidad }}">  
+					{% set label = fieldslabellist[currentloopfield -1] %}			  	
+					<span style="width: 15%">{{  label }}: </span> <span>{{ val }}</span>
+				</div>			
 			{% endif %}
 		{%- endfor -%}
 	{% else %}
@@ -62,14 +67,7 @@ function grouping(num_elements,label,subfields)
 				var subfield = document.getElementById(subfieldId);
 				if (subfield)
 				{
-					if ( document.getElementById(subfieldId).value == 'ninguno' )
-					{
-						group_fields_div.appendChild(elementId);					
-					}
-					else
-					{
-						group_fields_div.appendChild(subfield);
-					}	
+					group_fields_div.appendChild(subfield);
 				}
 			}
 		}
