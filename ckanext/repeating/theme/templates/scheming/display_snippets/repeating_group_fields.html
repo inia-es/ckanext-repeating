@@ -29,7 +29,7 @@
 	{% if fieldvalues %}
 		{%- for val in fieldvalues -%}
 			{% if val %}
-			<div id="fields_repeating_container_{{ field }}_{{ loop.index}}">  
+			<div id="fields_repeating_container_{{ field }}_{{ loop.index}}" value="{{ val }}">  
 				{% set label = fieldslabellist[currentloopfield -1] %}			  	
 				<span style="width: 15%">{{  label }}: </span> <span>{{ val }}</span>
 			</div>
@@ -62,7 +62,7 @@ function grouping(num_elements,label,subfields)
 				var subfield = document.getElementById(subfieldId);
 				if (subfield)
 				{
-					if ( subfield.value == 'ninguno' )
+					if ( document.getElementById(subfieldId).value == 'ninguno' )
 					{					
 					}
 					else
