@@ -7,7 +7,6 @@
            + [''] * field.get('form_blanks', 3)-%}
 
 {%- for element in values -%}
-
 {% if loop.index == 1 %}
     	<div id="fields_repeating_container_{{ field.field_name }}_1" style="display:block;">
 	{%- set options=[] -%}
@@ -103,12 +102,25 @@ function selectAction(num_elements,label,subfields)
 		    if(document.getElementById(selectfieldId1).value == 'INIA'){
 		      document.getElementById('field-' + subfields[0] + '-1').style.display='block';
 		      document.getElementById('fields_repeating_container_' + subfields[0] + '_1').style.display='block';
-		    }else{
+                      document.getElementById('field-' + subfields[1] + '-1').style.display='none';
+                      document.getElementById('fields_repeating_container_subfield_other_organization_' + element).style.display='none';
+		    }else if (document.getElementById(selectfieldId1).value == 'Otro'){
+                      document.getElementById('field-' + subfields[0] + '-1').style.display='none';
+                      document.getElementById('field-' + subfields[0] + '-1').value='ninguno';
+                      document.getElementById('fields_repeating_container_' + subfields[0] + '_1').style.display='none';
+
+                      document.getElementById('field-' + subfields[1] + '-1').style.display='block';
+                      document.getElementById('fields_repeating_container_' + subfields[1] + '_1').style.display='block';
+                    }else{
 		      document.getElementById('field-' + subfields[0] + '-1').style.display='none';
 		      document.getElementById('field-' + subfields[0] + '-1').value='ninguno';
 		      document.getElementById('fields_repeating_container_' + subfields[0] + '_1').style.display='none';
-			}    
+
+                      document.getElementById('field-' + subfields[1] + '-1').style.display='none';
+                      document.getElementById('fields_repeating_container_subfield_other_organization_' + element).style.display='none';
+		    } 
 		}
+
 		var element2 = 2;
 		var selectfieldId2='field-' + label + '-' + element2;	
 				
@@ -116,11 +128,24 @@ function selectAction(num_elements,label,subfields)
 		    if(document.getElementById(selectfieldId2).value == 'INIA'){			
 		      document.getElementById('field-subfield_select2_org_dep-' + element2).style.display='block';
 		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_' + element2).style.display='block';
-		    }else{
+
+                      document.getElementById('field-' + subfields[1] + '-' + element2).style.display='none';
+                      document.getElementById('fields_repeating_container_subfield_other_organization_' + element2).style.display='none';
+		    }else if(document.getElementById(selectfieldId2).value == 'Otro'){
+  		      document.getElementById('field-' + subfields[0] + '-' + element2).style.display='none';
+                      document.getElementById('field-' + subfields[0] + '-' + element2).value='ninguno';
+                      document.getElementById('fields_repeating_container_' + subfields[0] + '_' + element2).style.display='none';
+
+                      document.getElementById('field-' + subfields[1] + '-' + element2).style.display='block';
+                      document.getElementById('fields_repeating_container_' + subfields[1] + '_' + element2).style.display='block';                     
+                    } else {
 		      document.getElementById('field-subfield_select2_org_dep-' + element2).style.display='none';
 		      document.getElementById('field-subfield_select2_org_dep-' + element2).value='ninguno';
 		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_' + element2).style.display='none';
-			}    
+		
+   		      document.getElementById('field-' + subfields[1] + '-' + element2).style.display='none';
+                      document.getElementById('fields_repeating_container_subfield_other_organization_' + element2).style.display='none';
+		    }    
 		}
 
 		var element3 = 3;
@@ -130,11 +155,24 @@ function selectAction(num_elements,label,subfields)
 		    if(document.getElementById(selectfieldId3).value == 'INIA'){			
 		      document.getElementById('field-subfield_select2_org_dep-' + element3).style.display='block';
 		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_' + element3).style.display='block';
+			
+		      document.getElementById('field-' + subfields[1] + '-' + element3).style.display='none';
+                      document.getElementById('fields_repeating_container_subfield_other_organization_' + element3).style.display='none';
+		    } else if (document.getElementById(selectfieldId3).value == 'Otro'){
+                      document.getElementById('field-' + subfields[0] + '-' + element3).style.display='none';
+                      document.getElementById('field-' + subfields[0] + '-' + element3).value='ninguno';
+                      document.getElementById('fields_repeating_container_' + subfields[0] + '_' + element3).style.display='none';
+
+                      document.getElementById('field-' + subfields[1] + '-' + element3).style.display='block';
+                      document.getElementById('fields_repeating_container_' + subfields[1] + '_' + element3).style.display='block';  
 		    }else{
 		      document.getElementById('field-subfield_select2_org_dep-' + element3).style.display='none';
 		      document.getElementById('field-subfield_select2_org_dep-' + element3).value='ninguno';
 		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_' + element3).style.display='none';
-			}    
+
+		      document.getElementById('field-' + subfields[1] + '-' + element3).style.display='none';
+                      document.getElementById('fields_repeating_container_subfield_other_organization_' + element3).style.display='none';
+		    }    
 		}
 
 		var element4 = 4;
@@ -144,11 +182,24 @@ function selectAction(num_elements,label,subfields)
 		    if(document.getElementById(selectfieldId4).value == 'INIA'){			
 		      document.getElementById('field-subfield_select2_org_dep-' + element4).style.display='block';
 		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_' + element4).style.display='block';
-		    }else{
+
+		      document.getElementById('field-' + subfields[1] + '-' + element4).style.display='none';
+                      document.getElementById('fields_repeating_container_subfield_other_organization_' + element4).style.display='none';
+		    } else if (document.getElementById(selectfieldId4).value == 'Otro'){
+		      document.getElementById('field-' + subfields[0] + '-' + element4).style.display='none';
+                      document.getElementById('field-' + subfields[0] + '-' + element4).value='ninguno';
+                      document.getElementById('fields_repeating_container_' + subfields[0] + '_' + element4).style.display='none';
+
+                      document.getElementById('field-' + subfields[1] + '-' + element4).style.display='block';
+                      document.getElementById('fields_repeating_container_' + subfields[1] + '_' + element4).style.display='block';
+                    }else{
 		      document.getElementById('field-subfield_select2_org_dep-' + element4).style.display='none';
 		      document.getElementById('field-subfield_select2_org_dep-' + element4).value='ninguno';
 		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_' + element4).style.display='none';
-			}    
+
+		      document.getElementById('field-' + subfields[1] + '-' + element4).style.display='none';
+                      document.getElementById('fields_repeating_container_subfield_other_organization_' + element4).style.display='none';
+		    }    
 		}
 
                 var element5 = 5;
@@ -158,11 +209,24 @@ function selectAction(num_elements,label,subfields)
 		    if(document.getElementById(selectfieldId5).value == 'INIA'){			
 		      document.getElementById('field-subfield_select2_org_dep-' + element5).style.display='block';
 		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_' + element5).style.display='block';
+
+                      document.getElementById('field-' + subfields[1] + '-' + element5).style.display='none';
+                      document.getElementById('fields_repeating_container_subfield_other_organization_' + element5).style.display='none';
+                    } else if (document.getElementById(selectfieldId5).value == 'Otro'){
+                      document.getElementById('field-' + subfields[0] + '-' + element5).style.display='none';
+                      document.getElementById('field-' + subfields[0] + '-' + element5).value='ninguno';
+                      document.getElementById('fields_repeating_container_' + subfields[0] + '_' + element5).style.display='none';
+
+                      document.getElementById('field-' + subfields[1] + '-' + element5).style.display='block';
+                      document.getElementById('fields_repeating_container_' + subfields[1] + '_' + element5).style.display='block';
 		    }else{
 		      document.getElementById('field-subfield_select2_org_dep-' + element5).style.display='none';
 		      document.getElementById('field-subfield_select2_org_dep-' + element5).value='ninguno';
 		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_' + element5).style.display='none';
-			}    
+
+ 		      document.getElementById('field-' + subfields[1] + '-' + element5).style.display='none';
+                      document.getElementById('fields_repeating_container_subfield_other_organization_' + element5).style.display='none';
+		    }    
 		}
 
                 var element6 = 6;
@@ -172,11 +236,24 @@ function selectAction(num_elements,label,subfields)
 		    if(document.getElementById(selectfieldId6).value == 'INIA'){			
 		      document.getElementById('field-subfield_select2_org_dep-' + element6).style.display='block';
 		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_' + element6).style.display='block';
+
+		      document.getElementById('field-' + subfields[1] + '-' + element6).style.display='none';
+                      document.getElementById('fields_repeating_container_subfield_other_organization_' + element6).style.display='none';
+                    } else if (document.getElementById(selectfieldId6).value == 'Otro'){
+                      document.getElementById('field-' + subfields[0] + '-' + element6).style.display='none';
+                      document.getElementById('field-' + subfields[0] + '-' + element6).value='ninguno';
+                      document.getElementById('fields_repeating_container_' + subfields[0] + '_' + element6).style.display='none';
+
+                      document.getElementById('field-' + subfields[1] + '-' + element6).style.display='block';
+                      document.getElementById('fields_repeating_container_' + subfields[1] + '_' + element6).style.display='block';
 		    }else{
 		      document.getElementById('field-subfield_select2_org_dep-' + element6).style.display='none';
 		      document.getElementById('field-subfield_select2_org_dep-' + element6).value='ninguno';
 		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_' + element6).style.display='none';
-			}    
+
+		      document.getElementById('field-' + subfields[1] + '-' + element6).style.display='none';
+                      document.getElementById('fields_repeating_container_subfield_other_organization_' + element6).style.display='none';
+		    }    
 		}
 
                 var element7 = 7;
@@ -186,11 +263,24 @@ function selectAction(num_elements,label,subfields)
 		    if(document.getElementById(selectfieldId7).value == 'INIA'){			
 		      document.getElementById('field-subfield_select2_org_dep-' + element7).style.display='block';
 		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_' + element7).style.display='block';
+
+		      document.getElementById('field-' + subfields[1] + '-' + element7).style.display='none';
+                      document.getElementById('fields_repeating_container_subfield_other_organization_' + element7).style.display='none';
+                    } else if (document.getElementById(selectfieldId7).value == 'Otro'){
+                      document.getElementById('field-' + subfields[0] + '-' + element7).style.display='none';
+                      document.getElementById('field-' + subfields[0] + '-' + element7).value='ninguno';
+                      document.getElementById('fields_repeating_container_' + subfields[0] + '_' + element7).style.display='none';
+
+                      document.getElementById('field-' + subfields[1] + '-' + element7).style.display='block';
+                      document.getElementById('fields_repeating_container_' + subfields[1] + '_' + element7).style.display='block';
 		    }else{
 		      document.getElementById('field-subfield_select2_org_dep-' + element7).style.display='none';
 		      document.getElementById('field-subfield_select2_org_dep-' + element7).value='ninguno';
 		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_' + element7).style.display='none';
-			}    
+
+		      document.getElementById('field-' + subfields[1] + '-' + element7).style.display='none';
+                      document.getElementById('fields_repeating_container_subfield_other_organization_' + element7).style.display='none';
+		    }    
 		}
 
                 var element8 = 8;
@@ -200,11 +290,24 @@ function selectAction(num_elements,label,subfields)
 		    if(document.getElementById(selectfieldId8).value == 'INIA'){			
 		      document.getElementById('field-subfield_select2_org_dep-' + element8).style.display='block';
 		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_' + element8).style.display='block';
+
+		      document.getElementById('field-' + subfields[1] + '-' + element8).style.display='none';
+                      document.getElementById('fields_repeating_container_subfield_other_organization_' + element8).style.display='none';
+                    } else if (document.getElementById(selectfieldId8).value == 'Otro'){
+                      document.getElementById('field-' + subfields[0] + '-' + element8).style.display='none';
+                      document.getElementById('field-' + subfields[0] + '-' + element8).value='ninguno';
+                      document.getElementById('fields_repeating_container_' + subfields[0] + '_' + element8).style.display='none';
+
+                      document.getElementById('field-' + subfields[1] + '-' + element8).style.display='block';
+                      document.getElementById('fields_repeating_container_' + subfields[1] + '_' + element8).style.display='block';
 		    }else{
 		      document.getElementById('field-subfield_select2_org_dep-' + element8).style.display='none';
 		      document.getElementById('field-subfield_select2_org_dep-' + element8).value='ninguno';
 		      document.getElementById('fields_repeating_container_subfield_select2_org_dep_' + element8).style.display='none';
-			}    
+
+		      document.getElementById('field-' + subfields[1] + '-' + element8).style.display='none';
+                      document.getElementById('fields_repeating_container_subfield_other_organization_' + element8).style.display='none';
+		    }    
 		}
 
 

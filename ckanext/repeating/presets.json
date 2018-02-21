@@ -39,6 +39,15 @@
       }
     },
    {
+      "preset_name": "tematic_agrovoc_name",
+      "values": {
+        "form_snippet": "slug_tematic_agrovoc.html",
+        "display_snippet": "slug_tematic_agrovoc.html",
+        "validators": "repeating_text",
+        "output_validators": "repeating_text_output"
+      }
+   },
+   {
       "preset_name": "repeating_select_org_dep_in_group",
       "values": {
         "form_snippet": "select_org_dep.html",
