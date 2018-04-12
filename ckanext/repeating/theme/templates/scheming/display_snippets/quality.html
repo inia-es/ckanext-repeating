@@ -1,6 +1,61 @@
 {%- set values = data[field.field_name] -%}
+{% if values != '' %}
+  {% set quality = values[0][1:-1].replace("'",'').split(',') %}
+{% else %}
+  {% set quality = [] %}
+{% endif %}
 
-{%- for element in values -%}
-  {{ element }}
+{%- for result in quality -%}
+  {% set token = result.replace(" ","").split(':') %}
+  {% if token.__len__() > 1 %}
+     {% if "core"  == token[0] %}
+            <ul style="font-size: 0;display:inline-block;">
+               <li style="display:inline-block;"><span class="label">{{ token[0] }}</span></li>
+               {% if token[1] >= "0" and token[1] <= "4" %}
+                 <li style="display:inline-block;"><span class="label" data-format="bad">{{ token[1] }}/15</span></li>
+               {% elif token[1] >= "5" and token[1] <= "8" %}
+                 <li style="display:inline-block;"><span class="label" data-format="regular">{{ token[1] }}/15</span></li>
+               {% elif token[1] >= "9" %}
+                 <li style="display:inline-block;"><span class="label" data-format="good">{{ token[1] }}/15</span></li>
+               {% endif %}
+            </ul>
+      {% endif %}
+      {% if "legal"  == token[0] %}
+            <ul style="font-size: 0;display:inline-block;">
+               <li style="display:inline-block;"><span class="label">{{ token[0] }}</span></li>
+               {% if token[1] >= "0" and token[1] <= "2" %}
+                 <li style="display:inline-block;"><span class="label" data-format="bad">{{ token[1] }}/7</span></li>
+               {% elif token[1] >= "3" and token[1] <= "4" %}
+                 <li style="display:inline-block;"><span class="label" data-format="regular">{{ token[1] }}/7</span></li>
+               {% elif token[1] >= "5" %}
+                 <li style="display:inline-block;"><span class="label" data-format="good">{{ token[1] }}/7</span></li>
+               {% endif %}
+                       </ul>
+      {% endif %}
+      {% if "practico"  == token[0] %}
+            <ul style="font-size: 0;display:inline-block;">
+               <li style="display:inline-block;"><span class="label">{{ token[0] }}</span></li>
+               {% if token[1] >= "0" and token[1] <= "4" %}
+               <li style="display:inline-block;"><span class="label" data-format="bad">{{ token[1] }}/14</span></li>
+               {% elif token[1] >= "5" and token[1] <= "8" %}
+               <li style="display:inline-block;"><span class="label" data-format="regular">{{ token[1] }}/14</span></li>
+               {% elif token[1] >= "9" %}
+               <li style="display:inline-block;"><span class="label" data-format="good">{{ token[1] }}/14</span></li>
+               {% endif %}
+             </ul>
+       {% endif %}
+       {% if "social"  == token[0] %}
+               <ul style="font-size: 0;display:inline-block;">
+               <li style="display:inline-block;"><span class="label">{{ token[0] }}</span></li>
+               {% if token[1] >= "0" and token[1] <= "2" %}
+               <li style="display:inline-block;"><span class="label" data-format="bad">{{ token[1] }}/8</span></li>
+               {% elif token[1] >= "3" and token[1] <= "5" %}
+               <li style="display:inline-block;"><span class="label" data-format="regular">{{ token[1] }}/8</span></li>
+               {% elif token[1] >= "6" %}
+               <li style="display:inline-block;"><span class="label" data-format="good">{{ token[1] }}/8</span></li>
+               {% endif %}
+               </ul>
+        {% endif %}
+   {% endif %}
 {%- endfor -%}
 
