@@ -1,6 +1,7 @@
 {% import 'macros/form.html' as form %}
 
-<div data-module="custom-fields" >
+<div data-module="custom-fields" style="border-style:solid;border-width:1px">
+<h1>group</h1>
 {%- set values = data.get(field.field_name, [])
     + [''] * field.get('form_blanks', 3) -%}
 
@@ -9,6 +10,7 @@
 
 {%- for element in values -%}
 <div style="padding: 5px;">
+     <h1>Texto</h1>
      {% if loop.index == 1 %}
 	{% if element =='' %}
            {% set color = "background-color: #FFFFFF;" %}
@@ -19,7 +21,7 @@
            	{% if element == '' or values[loop.index] == '' %}
 	           <input id="button_fields_repeating_container_{{ field.label }}_1" type="button" value="Agregar {{ field.label }}" onclick="add_field_in_group({{ loop.index }}, '{{ field.label }}', {{ fieldname_subfields }} )" style="font-size: 12px; padding: 1px; float: right;"> 
 		{% endif %} 
-	
+		<h1>Debe salir</h1>	
                 {{ form.input(
 	  		    field.field_name + '-' ~ loop.index,
 		    	    id='field-' + field.field_name + '-' ~ loop.index,
