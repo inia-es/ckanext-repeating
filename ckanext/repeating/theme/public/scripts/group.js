@@ -25,7 +25,9 @@ function MoverDiv(elementid, subfields, index, next){
 		}	
 		/**mostrando los siguientes subcampos*/
 		var nextsubelementid = 'fields_repeating_container_'+subfields[i]+'_'+next;
-		document.getElementById(nextsubelementid).style.display = 'block';
+		if (subfields[i]!='select2_org_dep' && subflieds[i]!='other_organization'){
+			document.getElementById(nextsubelementid).style.display = 'block';
+		}
 	}
 }
 
