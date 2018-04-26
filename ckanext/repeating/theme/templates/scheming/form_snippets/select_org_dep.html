@@ -7,6 +7,7 @@
            + [''] * field.get('form_blanks', 3)-%}
 
 {%- for element in values -%}
+
 {% if loop.index == 1 %}
     	<div id="fields_repeating_container_{{ field.field_name }}_1" style="display:block;">
 	{%- set options=[] -%}
@@ -87,7 +88,6 @@
 </ol>
 <script>
 
-document.getElementById('fields_repeating_container_subfield_other_organization_1').style.display='none';
 
 var auxButtonSelectDepartament = document.getElementById('auxButtonSelectDepartament');
   if(auxButtonSelectDepartament){
@@ -99,7 +99,9 @@ function selectAction(num_elements,label,subfields)
 {
 	
 		var element = 1;
-		var selectfieldId1='field-' + label + '-' + element;	
+		var selectfieldId1='field-' + label + '-' + element;
+                console.log("select" + selectfieldId1 + " " + subfields);
+	
 		document.getElementById(selectfieldId1).onchange = function() {
 		    if(document.getElementById(selectfieldId1).value == 'INIA'){
 		      document.getElementById('field-' + subfields[0] + '-1').style.display='block';

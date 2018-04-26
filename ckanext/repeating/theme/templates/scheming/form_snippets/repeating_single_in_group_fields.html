@@ -4,8 +4,12 @@
     + [''] * field.get('form_blanks', 3) -%}
 
 {%- for element in values -%}
+{% if  field.field_name  == 'subfield_other_organization' %}
+{% set visibilidad = "display:none;" %}
+{% endif %}
+
 {% if loop.index == 1 %}
-    <div id="fields_repeating_container_{{ field.field_name }}_1" style="display:block;">
+    <div id="fields_repeating_container_{{ field.field_name }}_1" style="{{ visibilidad }}">
         {{ form.input(
         field.field_name + '-' ~ loop.index,
         id='field-' + field.field_name + '-' ~ loop.index,
