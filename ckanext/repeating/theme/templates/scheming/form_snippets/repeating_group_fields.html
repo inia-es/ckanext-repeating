@@ -1,6 +1,6 @@
 {% import 'macros/form.html' as form %}
 
-<div data-module="custom-fields" style="border-style:solid;border-width:1px">
+<div data-module="custom-fields" style="border-style:solid;border-width:1px;margin-bottom:15px">
 {%- set values = data.get(field.field_name, [])
     + [''] * field.get('form_blanks', 3) -%}
 
